@@ -7,7 +7,7 @@ function HeroSection() {
       <div className="relative w-full h-auto aspect-[1920/477] bg-cover bg-center md:pb-4 sm:pb-6" style={{
                 backgroundImage: `url(${HeroProduct.src})`,
                 }}>
-      <div className="flex flex-col items-center justify-center text-center z-10 ">
+      <div className="flex flex-col items-center justify-center text-center z-10 sm:py-2">
         <h1 className="lg:mt-36 md:mt-24 sm:mt-20 font-bold lg:text-6xl md:text-4xl sm:text-2xl">
           Find Your Perfect Match
         </h1>
