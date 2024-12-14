@@ -1,5 +1,11 @@
+import HeroSection from "./hero";
+
 function ProductsPage() {
-    return ( "Products page" );
+  return (
+    <div>
+      <HeroSection />
+    </div>
+  );
 }
 
 export default ProductsPage;
