@@ -21,7 +21,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={twMerge(oxygen.variable, "bg-[#161A1D] text-white antialiased font-oxygen")} >{children}</body>
+      <body className={twMerge(oxygen.variable, "bg-[#161A1D] text-white antialiased font-oxygen")} >{children}
+      </body>
     </html>
   );
 }

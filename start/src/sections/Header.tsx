@@ -5,6 +5,8 @@ import Logo from "@/assets/images/logo.png";
 import Link from "next/link";
 import { AiOutlineMenu, AiOutlineClose, AiOutlineInstagram, AiOutlineFacebook, AiOutlineYoutube } from "react-icons/ai";
 import { useState } from "react";
+import { twMerge } from "tailwind-merge";
+import ProductsPage from "@/app/products/page";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -15,7 +17,7 @@ const Header = () => {
 
 
   return (<nav className="w-full h-24">
-    <div className="flex justify-between h-full w-full items-center px-4 md:px-16 lg:px-24">
+    <div className="flex  h-full w-full items-center px-4 md:px-16 lg:px-24">
       <Link href="/">
       <Image
       src={Logo}
@@ -27,32 +29,44 @@ const Header = () => {
       />
       </Link>
 
-      <div className="hidden md:flex">
+      <div className="hidden md:flex ml-auto">
         <ul className="hidden sm:flex">
         <Link href="/">
           <li className="ml-10 uppercase hover:border-b sm:text-sm md:text-lg lg:text-xl">Home</li>
         </Link>
-        <Link href="/">
+        <Link href={`/products`}>
           <li className="ml-10 uppercase hover:border-b sm:text-sm md:text-lg lg:text-xl">Products</li>
         </Link>
-        <Link href="/">
+        <Link href={`/about`}>
           <li className="ml-10 uppercase hover:border-b sm:text-sm md:text-lg lg:text-xl">About</li>
         </Link>
-        <Link href="/">
+        <Link href={"/contact"}>
           <li className="ml-10 uppercase hover:border-b sm:text-sm md:text-lg lg:text-xl">Contact</li>
         </Link>
         </ul>
       </div>
 
-      
+      <div className="ml-10">
+        <ul className="flex">
+        <Link href="/">
+          <li className="ml-10 uppercase hover:border-b sm:text-sm md:text-lg lg:text-xl">Login</li>
+        </Link>
+        <Link href="/">
+          <li className="ml-10 uppercase hover:border-b sm:text-sm md:text-lg lg:text-xl">Sign up</li>
+        </Link>
+        </ul>
+      </div>
+
       <div onClick={handleNav} className="md:hidden lg:hidden cursor-pointer pl-24">
         <AiOutlineMenu size={25} />
       </div>
     </div>
     <div className={
+      twMerge(
       menuOpen
       ? "fixed left-0 top-0 w-[65%] md:hidden h-screen bg-[#363b3e] p-10 ease-in-out duration-500"
-      : "fixed left-[-100%] top-0 p-10  border-r-gray-900 bg-[#000300] ease-in-out duration-500"
+      : "fixed left-[-100%] top-0 p-10  border-r-gray-900 bg-[#000300] ease-in-out duration-500" 
+    )
     }>
       <div className="flex w-full items-center justify-end">
         <div onClick={handleNav} className="cursor-pointer">
