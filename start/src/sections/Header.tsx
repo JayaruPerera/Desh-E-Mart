@@ -46,7 +46,7 @@ const Header = () => {
         </ul>
       </div>
 
-      <div className="ml-10">
+      <div className="ml-10 sm:ml-auto">
         <ul className="flex">
         <Link href="/">
           <li className="ml-10 uppercase hover:border-b sm:text-sm md:text-lg lg:text-xl">Login</li>
@@ -83,7 +83,7 @@ const Header = () => {
                 Home
             </li>
           </Link>
-          <Link href="/">
+          <Link href={`/products`}>
             <li
               onClick={() => setMenuOpen(false)}
               className="py-4 cursor-pointer"
@@ -91,7 +91,7 @@ const Header = () => {
                 Product
             </li>
           </Link>
-          <Link href="/">
+          <Link href={`/about`}>
             <li
               onClick={() => setMenuOpen(false)}
               className="py-4 cursor-pointer"
@@ -99,7 +99,7 @@ const Header = () => {
                 About
             </li>
           </Link>
-          <Link href="/">
+          <Link href={`/contact`}>
             <li
               onClick={() => setMenuOpen(false)}
               className="py-4 cursor-pointer"
