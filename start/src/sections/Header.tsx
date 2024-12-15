@@ -6,10 +6,11 @@ import Link from "next/link";
 import { AiOutlineMenu, AiOutlineClose, AiOutlineInstagram, AiOutlineFacebook, AiOutlineYoutube } from "react-icons/ai";
 import { useState } from "react";
 import { twMerge } from "tailwind-merge";
-import ProductsPage from "@/app/products/page";
+import { UserButton, useAuth } from "@clerk/nextjs";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { isSignedIn } = useAuth();
 
   const handleNav = () => {
     setMenuOpen(!menuOpen);
@@ -29,6 +30,7 @@ const Header = () => {
       />
       </Link>
 
+      {/*Navbar links*/}
       <div className="hidden md:flex ml-auto">
         <ul className="hidden sm:flex">
         <Link href="/">
@@ -46,21 +48,23 @@ const Header = () => {
         </ul>
       </div>
 
-      <div className="ml-10 sm:ml-auto">
-        <ul className="flex">
-        <Link href="/">
-          <li className="ml-10 uppercase hover:border-b sm:text-sm md:text-lg lg:text-xl">Login</li>
-        </Link>
-        <Link href="/">
-          <li className="ml-10 uppercase hover:border-b sm:text-sm md:text-lg lg:text-xl">Sign up</li>
-        </Link>
-        </ul>
-      </div>
+      {/*User buttons*/}
+      <div className="ml-10 sm:ml-auto flex items-center">
+          {isSignedIn ? (
+            <UserButton afterSignOutUrl="/" />
+          ) : (
+            <ul className="flex space-x-4">
+              <Link href="/sign-in">
+                <li className="uppercase hover:border-b sm:text-sm md:text-lg lg:text-xl">Sign In</li>
+              </Link>
+              <Link href="/sign-up">
+                <li className="uppercase hover:border-b sm:text-sm md:text-lg lg:text-xl">Sign Up</li>
+              </Link>
+            </ul>
+          )}
+        </div>
 
-      <div onClick={handleNav} className="md:hidden lg:hidden cursor-pointer pl-24">
-        <AiOutlineMenu size={25} />
-      </div>
-    </div>
+
     <div className={
       twMerge(
       menuOpen
@@ -124,6 +128,7 @@ const Header = () => {
       priority
       />
       </div>
+    </div>
     </div>
   </nav>)
 };
