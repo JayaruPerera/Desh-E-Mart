@@ -1,4 +1,5 @@
 import HeroSection from "./hero";
+import Link from "next/link";
 import Image from "next/image";
 import plap1 from "@/assets/images/plap1.png"
 import plap2 from "@/assets/images/plap2.png"
@@ -32,7 +33,9 @@ function ProductsPage() {
                 <p className="hidden sm:block text-sm md:text-[14px]">Fast SSD storage, excellent touch 
                 display, and smooth performance.</p>
                 <p className="font-bold md:text-[18px] sm:text-[16px]">LKR 325500.00</p>
-                <button className="w-full mt-4 px-4 py-2 bg-white text-black font-bold rounded hover:bg-[#9D1CAC] transition duration-300 md:text-sm sm:text-[14px]">Buy Now</button>
+        <button className="w-full mt-4 px-4 py-2 bg-white text-black font-bold rounded hover:bg-[#9D1CAC] transition duration-300 md:text-sm sm:text-[14px]">
+            Buy Now
+        </button>
         </div>
 
         <div className="sm:ml-8 mt-10 ml-14 lg:w-[226px] md:w-[200px] sm:w-[130px] h-auto">
@@ -45,7 +48,9 @@ function ProductsPage() {
                 <p className="hidden sm:block text-sm md:text-[14px]">Fast SSD storage, excellent touch 
                 display, and smooth performance.</p>
                 <p className="font-bold md:text-[18px] sm:text-[16px]">LKR 325500.00</p>
-                <button className="w-full mt-4 px-4 py-2 bg-white text-black font-bold rounded hover:bg-[#9D1CAC] transition duration-300 md:text-sm sm:text-[14px]">Buy Now</button>
+                  <button className="w-full mt-4 px-4 py-2 bg-white text-black font-bold rounded hover:bg-[#9D1CAC] transition duration-300 md:text-sm sm:text-[14px]">
+            Buy Now
+        </button>  
         </div>
 
         <div className="sm:ml-8 mt-10 ml-14 lg:w-[226px] md:w-[200px] sm:w-[130px] h-auto">

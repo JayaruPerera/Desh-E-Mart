@@ -3,6 +3,7 @@ import { Oxygen } from "next/font/google";
 import "./globals.css";
 import { twMerge } from "tailwind-merge";
 import Header from "@/sections/Header";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const oxygen = Oxygen ({
   subsets: ["latin"],
@@ -21,12 +22,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    
+      <ClerkProvider>
     <html lang="en">
       <body className={twMerge(oxygen.variable, "bg-[#161A1D] text-white antialiased font-oxygen")} >
-        
         <Header />
         {children}
       </body>
     </html>
+        </ClerkProvider>
   );
 }
