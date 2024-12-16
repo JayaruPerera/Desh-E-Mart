@@ -17,7 +17,7 @@ const Header = () => {
   }
 
 
-  return (<nav className="z-50 fixed w-full h-24 bg-black">
+  return (<nav className="z-50 fixed w-full h-24 bg-transparent">
     <div className="flex  h-full w-full items-center px-4 md:px-16 lg:px-24">
       <Link href="/">
       <Image
@@ -49,7 +49,7 @@ const Header = () => {
       </div>
 
       {/*Auth buttons*/}
-      <div className="ml-10 sm:ml-auto flex items-center">
+      <div className="ml-auto flex items-center">
           {isSignedIn ? (
             <UserButton afterSignOutUrl="/" />
           ) : (
@@ -67,7 +67,7 @@ const Header = () => {
                   {/* Hamburger Icon */}
         <div
           onClick={handleNav}
-          className="md:hidden flex items-center cursor-pointer ml-auto"
+          className="ml-4 md:hidden flex items-center cursor-pointer "
         >
           <AiOutlineMenu size={25} className="text-white" />
         </div>
