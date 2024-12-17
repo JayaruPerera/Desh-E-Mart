@@ -6,9 +6,11 @@ import plap2 from "@/assets/images/plap2.png"
 import pphone1 from "@/assets/images/pphone1.png"
 import pphone2 from "@/assets/images/pphone2.png"
 import pcctv1 from "@/assets/images/pcctv1.png"
+import Header from "@/sections/Header";
 function ProductsPage() {
   return (
     <div>
+      <Header />
       <HeroSection />
 
       <div className="sm:ml-8 ml-14">
