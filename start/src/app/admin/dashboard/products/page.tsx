@@ -18,8 +18,8 @@ const ProductsPage = () => {
       <div className="flex items-center gap-4">
        <div>
        <div>
-            <Link href="/admin/dashboard">
-                <Button color="secondary" variant="shadow" className="mt-6" size="lg" >Add Products</Button>   
+            <Link href="/admin/dashboard/products/newProduct">
+                <Button color="secondary" variant="shadow" className="mt-6" size="lg" >Add Product</Button>   
             </Link>
         </div>
        </div>
