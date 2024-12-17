@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Product() {
     return (
         <>
-        <div className="mx-auto max-w-screen-lg">
+        <div className="lg:mx-auto max-w-screen-lg sm:mx-4 md:mx-8">
             <div className="my-4">
             <div>
                 <label
