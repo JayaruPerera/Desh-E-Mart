@@ -2,7 +2,7 @@
 import { Button } from "@nextui-org/button";
 import Link from "next/link";
 import {handleFormSubmit} from '../action/action'
-import { useState } from "react";
+import React, { useState } from "react";
 import { Oval } from "react-loader-spinner";
 
 export default function Product() {
@@ -17,41 +17,97 @@ export default function Product() {
         description: '',
       });
 
-      const handleChange = (e) => {
+      const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         setProductData((prev)=>({...prev, [name]:value}))
       };
 
-    const handleFileChange = async (e) => {
+    // const handleFileChange = async (e) => {
+    //     const file = e.target.files[0];
+    //     if (file) {
+    //       setIsUploading(true);
+    //       try {
+    //         const formData = new FormData();
+    //         formData.append('my-file', file);
+    //         const result = await handleFormSubmit(productData, formData); // Ensure the correct data is passed
+    //         if (result.status === 'success') {
+    //           console.log("result",result)
+    //           console.log("uploaded path :", result?.path)
+    //           setFileName(result.fileName)
+    //           console.log(result.fileName)
+    //           setProductData({ ...productData, image: result?.path });
+    //           setIsUploading(false);
+    //         } else {
+    //           alert('Error uploading image: ' + result.message);
+    //         }
+    //       } catch (error) {
+    //         console.error('Error uploading image:', error);
+    //         alert('Error uploading image');
+    //       } finally {
+    //         setIsUploading(false)
+    //       }
+    //     }
+    //   };
+
+    const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (!e.target.files || e.target.files.length === 0) {
+          alert('No file selected.');
+          return;
+        }
+      
         const file = e.target.files[0];
-        if (file) {
-          setIsUploading(true);
-          try {
-            const formData = new FormData();
-            formData.append('my-file', file);
-            const result = await handleFormSubmit(productData, formData); // Ensure the correct data is passed
-            if (result.status === 'success') {
-              console.log("result",result)
-              console.log("uploaded path :", result?.path)
-              setFileName(result.fileName)
-              console.log(result.fileName)
-              setProductData({ ...productData, image: result?.path });
-              setIsUploading(false);
-            } else {
-              alert('Error uploading image: ' + result.message);
-            }
-          } catch (error) {
-            console.error('Error uploading image:', error);
-            alert('Error uploading image');
-          } finally {
-            setIsUploading(false)
+        setIsUploading(true);
+      
+        try {
+          const formData = new FormData();
+          formData.append('my-file', file);
+      
+          const result = await handleFormSubmit(productData, formData); // Ensure the correct data is passed
+          if (result?.status === 'success') {
+            console.log('Upload result:', result);
+            console.log('Uploaded path:', result?.path);
+            setFileName(result.fileName || '');
+            setProductData({ ...productData, image: result?.path || '' });
+          } else {
+            alert('Error uploading image: ' + (result?.message || 'Unknown error'));
           }
+        } catch (error: unknown) {
+          console.error('Error uploading image:', error);
+          alert('Error uploading image. Please try again.');
+        } finally {
+          setIsUploading(false);
         }
       };
-
-
       
-  const handleSubmit = async (e) => {
+      
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+
+//     console.log("Submitting product:", productData); 
+
+//     const formData = new FormData();
+//     formData.append('name', productData.title);
+//     formData.append('category', productData.category);
+//     formData.append('price', productData.price);
+//     formData.append('description', productData.description);
+  
+//     if (productData.image) {
+//       formData.append('image', productData.image);
+//     } else {
+//       alert('Please upload an image');
+//       return;
+//     }
+
+//     console.log("1", formData)
+
+//     for (let pair of formData.entries()) {
+//       console.log(pair[0] + ': ' + pair[1]);
+//     }
+
+    
+//   };
+
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     console.log("Submitting product:", productData); 
@@ -71,30 +127,15 @@ export default function Product() {
 
     console.log("1", formData)
 
-    for (let pair of formData.entries()) {
-      console.log(pair[0] + ': ' + pair[1]);
-    }
+    // Convert the FormData entries to an array and iterate
+      const formDataEntries = Array.from(formData.entries());
+        for (let pair of formDataEntries) {
+            console.log(pair[0] + ': ' + pair[1]);
+        }
 
     
-    // try {
-    //   console.log("first", formData)
-    //   const res = await fetch('http://localhost:3000/api/product', {
-    //     method: 'POST',
-    //     body: formData,
-    //   });
-
-    //   const data = await res.json();
-    //   if (res.ok) {
-    //     alert('Product added successfully!');
-    //   } else {
-    //     console.error('Error adding product:', data.error);
-    //     alert('Error adding product: ' + data.error);
-    //   }
-    // } catch (error) {
-    //   console.error('Error during fetch:', error);
-    //   alert('An error occurred while adding the product.');
-    // }
   };
+
     return (
         <>
         <div className="lg:mx-auto max-w-screen-lg sm:mx-10 md:mx-16">
