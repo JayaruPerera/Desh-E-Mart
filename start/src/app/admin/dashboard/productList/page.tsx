@@ -2,6 +2,15 @@
 
 import { useEffect, useState } from "react";
 
+export interface Product {
+    _id: string;
+    title: string;
+    category: string;
+    price: number;
+    image: string;
+    description: string;
+  }
+  
 export default function ProductList() {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -41,9 +50,9 @@ export default function ProductList() {
                 <div className="text-center text-white">Loading...</div>
             ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 mx-4">
-                    {products.map((product) => (
+                    {products?.map((product) => (
                         <div
-                            key={product._id}
+                            key={product?._id}
                             className="rounded-lg bg-gray-200 shadow-md overflow-hidden cursor-pointer hover:bg-gray-300"
                         >
                             <img
