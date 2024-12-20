@@ -2,16 +2,18 @@
 import { Button } from "@nextui-org/button";
 import Link from "next/link";
 import {handleFormSubmit} from '../action/action'
-import React, { useState } from "react";
+import React, { FormEvent, useState } from "react";
 import { Oval } from "react-loader-spinner";
+import { useRouter } from "next/navigation";
 
 export default function Product() {
+    const router = useRouter();
     const [isUploading, setIsUploading] = useState(false)
     const [fileName, setFileName] = useState('')
 
     const [productData, setProductData] = useState({
         title: '',
-        category: '',
+        category: 'Mobile Phone',
         price: '',
         image: '',
         description: '',
@@ -22,32 +24,7 @@ export default function Product() {
         setProductData((prev)=>({...prev, [name]:value}))
       };
 
-    // const handleFileChange = async (e) => {
-    //     const file = e.target.files[0];
-    //     if (file) {
-    //       setIsUploading(true);
-    //       try {
-    //         const formData = new FormData();
-    //         formData.append('my-file', file);
-    //         const result = await handleFormSubmit(productData, formData); // Ensure the correct data is passed
-    //         if (result.status === 'success') {
-    //           console.log("result",result)
-    //           console.log("uploaded path :", result?.path)
-    //           setFileName(result.fileName)
-    //           console.log(result.fileName)
-    //           setProductData({ ...productData, image: result?.path });
-    //           setIsUploading(false);
-    //         } else {
-    //           alert('Error uploading image: ' + result.message);
-    //         }
-    //       } catch (error) {
-    //         console.error('Error uploading image:', error);
-    //         alert('Error uploading image');
-    //       } finally {
-    //         setIsUploading(false)
-    //       }
-    //     }
-    //   };
+
 
     const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
         if (!e.target.files || e.target.files.length === 0) {
@@ -107,38 +84,132 @@ export default function Product() {
     
 //   };
 
-const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+// const handleSubmit = async () => {
+//     // e.preventDefault();
+
+    
+
+//     console.log("Submitting product:", productData); 
+
+//     const formData = new FormData();
+//     formData.append('title', productData.title);
+//     formData.append('category', productData.category);
+//     formData.append('price', productData.price);
+//     formData.append('description', productData.description);
+  
+//     if (productData.image) {
+//       formData.append('image', productData.image);
+//     } else {
+//       alert('Please upload an image');
+//       return;
+//     }
+
+//     console.log("1", formData)
+
+//     // Convert the FormData entries to an array and iterate
+//       const formDataEntries = Array.from(formData.entries());
+//         for (let pair of formDataEntries) {
+//             console.log(pair[0] + ': ' + pair[1]);
+//         }
+//         try {
+//             const response = await fetch('/api/product', {
+//                 method: 'POST',
+//                 headers: {
+//                     'Content-Type': 'application/json',
+//                 },
+//                 body: JSON.stringify(formData),
+//             });
+
+//             const result = await response.json();
+
+//             if (response.ok) {
+//                 alert('Product saved successfully!');
+//                 router.push('/admin/dashboard'); // Navigate to dashboard after successful submission
+
+//                 setProductData({
+//                     title: '',
+//                     category: '',
+//                     price: '',
+//                     image: '',
+//                     description: '',
+//                 });
+
+//             } else {
+//                 alert('Error saving product: ' + (result.message || 'Unknown error'));
+//             }
+//         } catch (error) {
+//             console.error('Error submitting product:', error);
+//             alert('Error submitting product. Please try again.');
+//         }
+    
+//   };
+const handleSubmit = async (e:FormEvent ) => {
     e.preventDefault();
 
-    console.log("Submitting product:", productData); 
+    // console.log("Submitting product:", productData); 
+
+    // Ensure productData is properly structured
+    if (!productData.title || !productData.category || !productData.price || !productData.description) {
+        alert('All fields are required!');
+        return;
+    }
+
+    if (!productData.image) {
+        alert('Please upload an image.');
+        return;
+    }
 
     const formData = new FormData();
-    formData.append('name', productData.title);
+    formData.append('title', productData.title);
     formData.append('category', productData.category);
     formData.append('price', productData.price);
     formData.append('description', productData.description);
-  
-    if (productData.image) {
-      formData.append('image', productData.image);
-    } else {
-      alert('Please upload an image');
-      return;
+    formData.append('image', productData.image);
+
+
+    console.log("formData", formData)
+
+    // for (let pair of formData.entries()) {
+    //   console.log(pair[0] + ': ' + pair[1]);
+    // }
+    for (const [key, value] of Array.from(formData.entries())) {
+        console.log(`${key}: ${value}`);
     }
 
-    console.log("1", formData)
-
-    // Convert the FormData entries to an array and iterate
-      const formDataEntries = Array.from(formData.entries());
-        for (let pair of formDataEntries) {
-            console.log(pair[0] + ': ' + pair[1]);
-        }
-
     
+    try {
+      console.log("first", formData)
+      const res = await fetch('http://localhost:3000/api/product', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        alert('Product added successfully!');
+        setProductData({
+            title: '',
+            category: 'Mobile Phone',
+            price: '',
+            description: '',
+            image: ''
+        })
+        setFileName('')
+      } else {
+        console.error('Error adding product:', data.error);
+        alert('Error adding product: ' + data.error);
+      }
+    } catch (error) {
+      console.error('Error during fetch:', error);
+      alert('An error occurred while adding the product.');
+    }
   };
+
 
     return (
         <>
         <div className="lg:mx-auto max-w-screen-lg sm:mx-10 md:mx-16">
+        <form onSubmit={handleSubmit}>
             <div className="my-4">
             <div>
                 <label
@@ -173,10 +244,10 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                     value={productData.category}
                     onChange={handleChange}
                 >
-                    <option value="">Mobile Phone</option>
-                    <option value="">Laptop</option>
-                    <option value="">CCTV</option>
-                    <option value="">Accessories</option>
+                    <option value="Mobile Phone">Mobile Phone</option>
+                    <option value="Laptop">Laptop</option>
+                    <option value="CCTV">CCTV</option>
+                    <option value="Accessories">Accessories</option>
                 </select>
                 </div>
             </div>
@@ -300,13 +371,11 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
             </div>
 
             <div className="mx-auto my-4">
-            <Link href="/admin/dashboard">
-                <Button color="secondary" variant="shadow" className="mt-6" size="lg">Save Product
-                    <input id="fileInput" type="file" className="hidden" accept="image/*" multiple />
+                <Button color="secondary" variant="shadow" className="mt-6" size="lg" type="submit"> Save Product
                 </Button>
-                </Link>
             
         </div>
+        </form>
         </div>
         </>
     );
