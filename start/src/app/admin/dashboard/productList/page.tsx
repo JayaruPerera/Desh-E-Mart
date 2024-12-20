@@ -43,7 +43,7 @@ export default function ProductList() {
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 px-4 mx-4">
                     {products.map((product) => (
                         <div
-                            key={product.id}
+                            key={product._id}
                             className="rounded-lg bg-gray-200 shadow-md overflow-hidden cursor-pointer hover:bg-gray-300"
                         >
                             <img
