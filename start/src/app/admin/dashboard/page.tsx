@@ -36,7 +36,11 @@ export default function Dashboard() {
 </header>
 
 <div className="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8 px-4 mx-4">
-  <div className="h-32 rounded-lg bg-gray-200"></div>
+  <Link href="/admin/dashboard/productList">
+    <div className="h-32 rounded-lg bg-gray-200 flex items-center justify-center">
+      <h2 className="text-black text-xl shadow-lg font-bold ">Products</h2>
+    </div>
+  </Link>
   <div className="h-32 rounded-lg bg-gray-200"></div>
   <div className="h-32 rounded-lg bg-gray-200"></div>
   <div className="h-32 rounded-lg bg-gray-200"></div>

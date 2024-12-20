@@ -43,6 +43,11 @@ const nextConfig = {
 
     return config;
   },
+  
+  images: {
+    domains: ['d1vkuao1gkuwze.cloudfront.net'],
+},
+
 };
 
 export default nextConfig;
