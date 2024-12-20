@@ -23,6 +23,7 @@ export default function ProductList() {
         fetchProducts();
     }, []);
 
+    //for short description
     const truncateDescription = (description:String, maxLength = 100) => {
         return description.length > maxLength
             ? description.substring(0, maxLength) + "..."
