@@ -2,6 +2,15 @@
 
 import { useEffect, useState } from "react";
 
+export interface Product {
+    _id: string;
+    title: string;
+    category: string;
+    price: number;
+    image: string;
+    description: string;
+  }
+  
 export default function ProductList() {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
