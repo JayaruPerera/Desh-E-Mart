@@ -1,9 +1,9 @@
-import Image from "next/image";
 import HeroProduct from "@/assets/images/hero_product.png";
 import { FC } from "react";
+import Image from "next/image";
 
 interface HeroSectionProps {
-  heroImage: string; // Accept heroImage as a string (image URL)
+  heroImage: string;
 }
 
 const HeroSection: FC<HeroSectionProps> = ({ heroImage = HeroProduct.src }) => {

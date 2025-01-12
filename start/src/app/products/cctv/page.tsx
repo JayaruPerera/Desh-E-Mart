@@ -1,6 +1,5 @@
 import HeroSection from "../hero";
-import HeroCCTVImage from "@/assets/images/cctv1.jpg";
-import Image from "next/image";
+import HeroCCTVImage from "@/assets/images/cctv3.png";
 import Link from "next/link";
 
 function CCTVDetails() {
@@ -29,7 +28,7 @@ function CCTVDetails() {
             </button>
           </Link>
 
-          <Link href="/cctv">
+          <Link href="/product/cctv">
             <button className="lg:px-8 lg:py-3 md:px-6 md:py-2 sm:px-4 sm:py-1 bg-white text-black font-bold rounded-full md:text-sm sm:text-xs">
               CCTV
             </button>

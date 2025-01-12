@@ -1,11 +1,11 @@
 import HeroSection from "../hero";
-import HeroCCTVImage from "@/assets/images/ass2.png";
+import HeroAssImage from "@/assets/images/ass1.jpg";
 import Link from "next/link";
 
 function AccessoriesDetails() {
     return ( 
         <div>
-      <HeroSection heroImage={HeroCCTVImage.src} />
+      <HeroSection heroImage={HeroAssImage.src} />
 
       <div className="sm:ml-8 ml-14">
         <h1 className="font-bold mb-4 mt-12">Filter your selections</h1>
@@ -28,7 +28,7 @@ function AccessoriesDetails() {
             </button>
           </Link>
 
-          <Link href="/cctv">
+          <Link href="/products/cctv">
             <button className="lg:px-8 lg:py-3 md:px-6 md:py-2 sm:px-4 sm:py-1 text-white font-bold rounded-full hover:bg-gray-500 border border-white border-opacity-70 md:text-sm sm:text-xs">
               CCTV
             </button>

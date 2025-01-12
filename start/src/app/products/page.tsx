@@ -6,10 +6,11 @@ import plap2 from "@/assets/images/plap2.png"
 import pphone1 from "@/assets/images/pphone1.png"
 import pphone2 from "@/assets/images/pphone2.png"
 import pcctv1 from "@/assets/images/pcctv1.png"
+import HeroProduct from "@/assets/images/hero_product.png";
 function ProductsPage() {
   return (
     <div>
-      <HeroSection heroImage={""} />
+      <HeroSection heroImage={HeroProduct.src} />
 
       <div className="sm:ml-8 ml-14">
         <h1 className="font-bold mb-4 mt-12">Filter your selections</h1>
