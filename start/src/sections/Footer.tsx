@@ -22,16 +22,25 @@ const Footer = () => {
             Our mission is to provide quality products and trusted repair
             services, making technology accessible and reliable for all.
           </p>
-          <div className="mt-4">
+          <div className="mt-8">
             <span>Follow in:</span>
-            <div className="flex space-x-2 mt-2">
-              <a href="/" className="text-white text-xl hover:text-gray-400">
+            <div className="flex space-x-4 mt-2 text-black">
+              <a
+                href="/"
+                className="inline-block w-10 bg-white rounded-full m-2 p-2"
+              >
                 <FontAwesomeIcon icon={faFacebook} />
               </a>
-              <a href="/" className="text-white text-xl hover:text-gray-400">
+              <a
+                href="/"
+                className="inline-block w-10 bg-white rounded-full m-2 p-2"
+              >
                 <FontAwesomeIcon icon={faInstagram} />
               </a>
-              <a href="/" className="text-white text-xl hover:text-gray-400">
+              <a
+                href="/"
+                className="inline-block w-10 bg-white rounded-full m-2 p-2"
+              >
                 <FontAwesomeIcon icon={faTiktok} />
               </a>
             </div>
@@ -124,9 +133,9 @@ const Footer = () => {
       </div>
 
       {/* Footer Bottom */}
-      <div className="mt-10 border-b border-gray-700 pt-4 pb-4 text-center text-sm">
-        <p>© 2024 Desha E-Mart. All Rights Reserved by team ///.</p>
-        <p className="mt-2">
+      <div className="mt-5 border-b border-gray-700 pt-4 pb-4 text-center text-sm flex justify-between ">
+        <p className="ml-10">© 2024 Desha E-Mart. All Rights Reserved by team ///.</p>
+        <p className="mr-10">
           Read our{" "}
           <a href="/" className="hover:text-gray-400">
             Privacy Policy
