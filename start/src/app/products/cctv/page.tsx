@@ -115,7 +115,7 @@ function CCTVDetails() {
               <button className="flex-grow px-4 py-2 bg-white text-black font-bold rounded hover:bg-[#9D1CAC] transition duration-300 md:text-sm sm:text-[14px] text-xs">
                 Buy Now
               </button>
-             <div className="h-8 w-8 flex items-center justify-center rounded-4 hover:cursor-pointer border-2 ">
+             <div className="h-9 w-9 flex items-center justify-center rounded hover:cursor-pointer border-2 ">
               <FontAwesomeIcon icon={faShoppingCart} className="text-white px-1" />
             </div>
             </div>
