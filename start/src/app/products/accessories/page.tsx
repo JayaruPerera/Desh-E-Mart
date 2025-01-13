@@ -14,7 +14,7 @@ import ASS_P8 from "@/assets/images/ASS_P1.jpg";
 import ASS_P9 from "@/assets/images/ASS_P9.jpg";
 import ASS_P10 from "@/assets/images/ASS_P10.jpg";
 
-import Footer from "@/sections/Footer.tsx";
+import Footer from "@/sections/Footer";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";

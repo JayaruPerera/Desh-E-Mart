@@ -110,19 +110,19 @@ const Footer = () => {
         <div className="ml-10">
           <h2 className="font-bold text-lg">Contact</h2>
           <ul className="mt-4 space-y-2 text-sm">
-            <li>
+            <li className="flex items-center">
               <span className="inline-block w-4">
                 <FontAwesomeIcon icon={faMapMarkerAlt} />
               </span>
               <span className="ml-5">Pambahinna, Balangoda, Rathnapura.</span>
             </li>
-            <li>
+            <li className="flex items-center">
               <span className="inline-block w-4">
                 <FontAwesomeIcon icon={faEnvelope} />
               </span>
-              <span className="ml-5">deshamart@gmail.com</span>
+              <span className="ml-5 ">deshamart@gmail.com</span>
             </li>
-            <li>
+            <li className="flex items-center">
               <span className="inline-block w-4">
                 <FontAwesomeIcon icon={faPhone} />
               </span>

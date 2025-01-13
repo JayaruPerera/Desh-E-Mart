@@ -10,6 +10,8 @@ import cctv4 from "@/assets/images/CCTV_P4.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
+import Footer from "@/sections/Footer";
+
 function CCTVDetails() {
   const products = [
     {
@@ -120,6 +122,7 @@ function CCTVDetails() {
           </div>
         ))}
       </div>
+      <Footer />
     </div>
   );
 }
