@@ -158,7 +158,8 @@ function AccessoriesDetails() {
             key={product.id}
             className="sm:ml-8 mt-10 ml-4 lg:w-[226px] md:w-[200px] sm:w-[150px] w-[140px] h-auto rounded-lg flex-shrink-0"
           >
-            <div className="w-full h-[200px] overflow-hidden rounded-lg">
+            <div className="w-full h-[200px] overflow-hidden rounded-lg relative">
+              {/* Image */}
               <Image
                 src={product.imageSrc}
                 alt={product.alt}
@@ -166,6 +167,17 @@ function AccessoriesDetails() {
                 height={200}
                 className="w-full h-full object-cover"
               />
+
+              {/* In Stock Overlay */}
+              <p
+                className={`absolute top-2 right-2 text-sm font-bold px-2 py-1 rounded bg-opacity-80 ${
+                  product.inStock
+                    ? "bg-green-500 text-white"
+                    : "bg-red-500 text-white"
+                }`}
+              >
+                {product.inStock ? "In Stock" : "Out of Stock"}
+              </p>
             </div>
             <h1 className="font-bold  md:text-[15px] sm:text-sm text-xs mt-2">
               {product.title}
@@ -176,15 +188,6 @@ function AccessoriesDetails() {
             <p className="font-bold  md:text-[18px] sm:text-[16px] text-sm mt-1">
               {product.price}
             </p>
-            <p
-                  className={`text-sm ${
-                    product.inStock === true
-                      ? "text-green-500"
-                      : "text-red-500"
-                  }`}
-                >
-                  {product.inStock === true? "In Stock" : "Out of Stock"}
-                </p>
             <div className="flex items-center space-x-2 mt-4">
               <button className="flex-grow px-4 py-2 bg-white text-black font-bold rounded hover:bg-red-600 transition duration-300 md:text-sm sm:text-[14px] text-xs">
                 Buy Now
