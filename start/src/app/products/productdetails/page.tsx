@@ -21,7 +21,7 @@ const ProductDetails = () => {
 
       {/* Product Section */}
       <main className="bg-[#161A1D] max-w-7xl mx-auto p-4   ">
-        <div className="mt-8 border-b-2 border-gray-600 pb-3">
+        <div className="mt-8 ">
           <a
             href="/products"
             className="text-l mt-20 mb-4 flex items-center text-white gap-2"
@@ -43,6 +43,9 @@ const ProductDetails = () => {
           </a>
           <h1 className="text-2xl font-bold">Samsung Galaxy S23 Ultra</h1>
         </div>
+
+       
+        
         <div className="bg-[#161A1D] p-6 rounded shadow-md border-b-2 border-gray-600 pb-36">
           <div className="flex flex-col md:flex-row">
             {/* Product Image */}
@@ -152,7 +155,7 @@ const ProductDetails = () => {
                 <p className="text-lg font-semibold">{product.price}</p>
 
                 <div className="flex flex-row mt-6 space-x-4">
-                  <button className="flex-grow w-[59px] h-[48px] font-bold rounded  md:text-sm sm:text-[14px] text-xs bg-white text-[#161A1D]">
+                  <button className="flex-grow w-[59px] h-[48px] font-bold rounded hover:bg-red-500 hover:text-white  md:text-sm sm:text-[14px] text-xs bg-white text-[#161A1D]">
                     Buy now
                   </button>
                   <button className="w-[59px] h-[48px] bg-[#161A1D] text-black rounded">
