@@ -17,7 +17,7 @@ const Header = () => {
   }
 
 
-  return (<nav className="z-50 fixed w-full h-24 bg-transparent">
+  return (<nav className="z-50 top-0 fixed w-full h-24 bg-transparent">
     <div className="flex  h-full w-full items-center px-4 md:px-16 lg:px-24">
       <Link href="/">
       <Image
