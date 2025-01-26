@@ -77,9 +77,11 @@ const ProductDetails = () => {
                 </p>
               </div>
               <div className="mt-10">
+                <Link href="/products/productpurchase">
                 <button className="bg-red-500 text-white px-6 py-2 rounded mr-2">
                   Buy now
                 </button>
+                </Link>
                 <button className="bg-white text-black px-6 py-2 rounded">
                   Add to cart
                 </button>
