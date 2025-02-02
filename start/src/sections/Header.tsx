@@ -16,8 +16,8 @@ const Header = () => {
     setMenuOpen(!menuOpen);
   }
 
-
   return (<nav className="z-50 fixed w-full h-24">
+
     <div className="flex  h-full w-full items-center px-4 md:px-16 lg:px-24">
       <Link href="/">
       <Image
@@ -50,6 +50,7 @@ const Header = () => {
 
       {/*User buttons*/}
       <div className="ml-10 sm:ml-auto flex items-center">
+
           {isSignedIn ? (
             <UserButton afterSignOutUrl="/" />
           ) : (
@@ -65,6 +66,19 @@ const Header = () => {
         </div>
 
 
+                  {/* Hamburger Icon */}
+        <div
+          onClick={handleNav}
+          className="ml-4 md:hidden flex items-center cursor-pointer "
+        >
+          <AiOutlineMenu size={25} className="text-white" />
+        </div>
+      
+
+
+
+
+        {/*Hamburger menu*/}
     <div className={
       twMerge(
       menuOpen
@@ -113,11 +127,15 @@ const Header = () => {
           </Link>
         </ul>
       </div>
+
+      {/* Social Icons */}
       <div className="flex flex-row justify-around pt-10 items-center">
         <AiOutlineInstagram size={30} className="cursor-pointer" color="#9D1CAC" />
         <AiOutlineFacebook size={30} className="cursor-pointer" color="#9D1CAC"/>
         <AiOutlineYoutube size={30} className="cursor-pointer" color="#9D1CAC" />
       </div>
+
+      {/* Mobile Logo in hamburger menu */}
       <div className="flex flex-row justify-center">
       <Image
       src={Logo}
