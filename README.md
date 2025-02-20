@@ -1,3 +1,4 @@
+
 # Desha E-Mart
 
 Desha E-Mart is a web platform created to support the community as part of a Community Project course module. This website was developed for Desha E-Mart, a mobile phone shop located near the Sabaragamuwa University. The shop is a primary destination for students to purchase accessories and repair their mobile devices. By digitizing the shop’s services, this platform aims to make it more accessible and convenient for students.
@@ -12,10 +13,12 @@ Desha E-Mart is a web platform created to support the community as part of a Com
 
 ---
 
+
 ## Motivation
 This project was developed to benefit the community, especially the student population, by providing a seamless online experience for purchasing and repairing devices.
 
 ---
+
 
 ## Installation
 
@@ -51,4 +54,5 @@ Follow these steps to set up the project locally:
 ## Acknowledgments
 
 Special thanks to the Desha E-Mart shop for allowing us to create this platform to support the community.
+
 

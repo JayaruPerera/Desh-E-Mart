@@ -8,6 +8,7 @@ import plap2 from "@/assets/images/plap2.png"
 import pphone1 from "@/assets/images/pphone1.png"
 import pphone2 from "@/assets/images/pphone2.png"
 import pcctv1 from "@/assets/images/pcctv1.png"
+import HeroProduct from "@/assets/images/hero_product.png";
 import Header from "@/sections/Header";
 import { useEffect, useState } from "react";
 
@@ -61,10 +62,10 @@ function ProductsPage() {
 
   return (
     <div>
-      <Header />
-      <HeroSection />
+      <HeroSection heroImage={HeroProduct.src} />
 
       <div className="sm:ml-8 ml-14">
+
       <h1 className="font-bold mb-4 mt-12">Filter your selections</h1>
       <div className="flex gap-4 flex-wrap"> 
       <button 
@@ -140,3 +141,4 @@ function ProductsPage() {
 }
 
 export default ProductsPage;
+

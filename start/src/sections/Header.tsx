@@ -16,9 +16,7 @@ const Header = () => {
     setMenuOpen(!menuOpen);
   }
 
-
-
-  return (<nav className="z-50 fixed w-full h-12 bg-transparent relative">
+  return (<nav className="z-50 fixed w-full h-24">
 
     <div className="flex  h-full w-full items-center px-4 md:px-16 lg:px-24">
       <Link href="/">
@@ -50,8 +48,9 @@ const Header = () => {
         </ul>
       </div>
 
-      {/*Auth buttons*/}
-      <div className="ml-auto flex items-center">
+      {/*User buttons*/}
+      <div className="ml-10 sm:ml-auto flex items-center">
+
           {isSignedIn ? (
             <UserButton afterSignOutUrl="/" />
           ) : (
@@ -65,6 +64,7 @@ const Header = () => {
             </ul>
           )}
         </div>
+
 
                   {/* Hamburger Icon */}
         <div

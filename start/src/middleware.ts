@@ -1,3 +1,4 @@
+
 import { clerkMiddleware,createRouteMatcher } from "@clerk/nextjs/server";
 
 
@@ -15,3 +16,4 @@ import { clerkMiddleware,createRouteMatcher } from "@clerk/nextjs/server";
 		],
 		publicRoutes: ["/"], // Allow the home page without authentication
 	};
+
