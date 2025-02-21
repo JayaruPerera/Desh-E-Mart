@@ -1,6 +1,8 @@
 import  Header  from "@/sections/Header";
 import './page.css';
 import { icons } from '../assets/icons/assets.js'
+import ProductCard from "@/components/ProductCard";
+import CardSlider from "@/components/CardSlider";
 // import { Footer } from "@/sections/Footer";
 
 export default function Home() {
@@ -256,7 +258,17 @@ export default function Home() {
       </div>
 
       {/* product section */}
+      <div className="main-section">
+        <div className="w-[100%] mb-[-50px] flex flex-col py-[8px] border-b border-[#C1C2C3] border-opacity-30">
+          <p className="text-[14px] text-[#FCFDFF] opacity-70">
+            Shop Products
+          </p>
+        </div>
 
+        <CardSlider heading="Mobile Phones" />
+        <CardSlider heading="Charges & Accessories" />
+
+      </div>
 
 
       {/* Get to know about us section */}
@@ -310,11 +322,18 @@ export default function Home() {
         </div>
       </div>
 
-
       {/* footer */}
       <div className="nav-container">
         {/* <Footer /> */}
       </div>
+
+      {/* <ProductCard 
+        title="iPhone SE (2022)" 
+        imageUrl="" 
+        description="Compact design with A15 Bionic chip and 4.7-inch Retina display." 
+        price={45500.00} 
+        inStock={true} 
+      /> */}
       
     </div>
   );
