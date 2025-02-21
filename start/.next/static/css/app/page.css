@@ -1,0 +1,395 @@
+/*!**************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./src/app/page.css ***!
+  \**************************************************************************************************************************************************************************************************************************************************************/
+
+.home-content {
+    width: 90%;
+    margin-inline: auto;
+    background-color: #161A1D;
+    padding-block-start: 80px;
+}
+
+.home-inner .heading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-block: 50px;
+}
+.home-inner .heading h2 {
+    font-size: 36px;
+    position: relative;
+    display: block;
+    width: -moz-fit-content;
+    width: fit-content;
+}
+.topper::before {
+    content: "Your";
+    position: absolute;
+    top: -6px;
+    left: 0;
+    font-size: 12px;
+    opacity: 0.7;
+}
+.home-inner .heading h1 {
+    font-size: 96px;
+    line-height: 96px;
+    color: #FCFDFF;
+    text-shadow: 0 0 4px #FCFDFF, 0 0 10px #FCFDFF, 0 0 16px #FCFDFF;
+}
+
+.home-container .home-img {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    top: -100px;
+}
+
+.status-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    margin-top: -60px;
+}
+.status-container h4 {
+    font-size: 18px;
+    font-weight: 500;
+    color: #FCFDFF;
+}
+.status-container p,
+.home-bottom p {
+    font-size: 14px;
+    letter-spacing: 0.4px;
+    color: rgb(252, 253, 255, 0.7);
+    text-align: center;
+}
+.status-container .left,
+.status-container .right {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+.right {
+    order: -1;
+  }
+  
+.left {
+    order: 1;
+}
+
+.status-container .right .openclose {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+.status-container .right .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #60F000;
+}
+
+.home-bottom {
+    margin-block-start: 60px;
+    text-align: center;
+}
+
+/* main-section */
+.main-section {
+    width: 90%;
+    margin-inline: auto;
+    margin-block-start: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+.main-section .section-header {
+    font-size: 24px;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+.main-section .expertise {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+.main-section .expertise .exp-card {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 24px 14px;
+    border-bottom: 1px solid rgb(193, 194, 195, 0.3);
+}
+.main-section .expertise .exp-card img {
+    width: 40px;
+    height: 40px;
+}
+.main-section .exp-card h4 {
+    font-size: 18px;
+    font-weight: 500;
+    color: #FCFDFF;
+    letter-spacing: 0.5px;
+}
+.card-text {
+    font-size: 14px;
+    letter-spacing: 0.4px;
+    color: rgb(252, 253, 255, 0.7);
+}
+
+/* service card section *************************/
+.re-section {
+    margin-inline: auto;
+    width: 90%;
+}
+.repair-card {
+    width: 100%;
+    max-width: 900px;
+    position: relative;
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    align-items: center;
+    gap: 40px;
+}
+
+.servicecard-text {
+    text-align: center;
+}
+
+.repair-card .re-card {
+    position: relative;
+}
+.repair-card .re-card img {
+    width: 100%;
+}
+
+.repair-card .re-card .card-details {
+    position: absolute;
+    width: -moz-fit-content;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    bottom: 0;
+    padding: 24px;
+}
+
+.repair-card .re-card .card-details h4 {
+    font-size: 18px;
+    font-weight: 500;
+    color: #FCFDFF;
+    letter-spacing: 0.5px;
+}
+.repair-card .re-card .card-details .card-text {
+    font-size: 14px;
+    letter-spacing: 0.4px;
+    color: rgb(252, 253, 255, 0.7);
+}
+.repair-card .re-card .card-details a {
+    width: -moz-fit-content;
+    width: fit-content;
+    padding: 12px 16px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #FCFDFF;
+    text-decoration: none;
+    border: 1px solid #FCFDFF;
+    border-radius: 4px;
+}
+.repair-card .re-card .card-details a:is(:hover, :focus) {
+    background-color: rgb(252, 253, 255, 0.1);
+}
+
+/* device solution section */
+.solutions {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.solution {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.solution-card {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.solution-card img {
+    height: 16px;
+}
+.solution-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.solutions .solution h4 {
+    font-size: 18px;
+    font-weight: 400;
+    color: #FCFDFF;
+    letter-spacing: 0.5px;
+}
+.solutions .solution .card-text {
+    font-size: 14px;
+    letter-spacing: 0.4px;
+    color: rgb(252, 253, 255, 0.7);
+}
+
+
+/* responsive css */
+
+@media screen and (min-width: 540px) {
+    .home-content {
+        width: 85%;
+    }
+    .status-container {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+    .status-container p {
+        text-align: left;
+    }
+    .status-container .left,
+    .status-container .right {
+        max-width: 40%;
+        align-items: flex-start;
+    }
+    .status-container .right {
+        align-items: flex-end;
+    }
+    .time {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    .right {
+        order: 1;
+    }
+    .left {
+        order: -1;
+    }
+    .home-bottom {
+        margin-block-start: 80px;
+    }
+    
+    /* main-section */
+    .main-section {
+        width: 85%;
+        margin-block-start: 120px;
+        gap: 60px;
+    }
+    .main-section .expertise {
+        flex-direction: row;
+    }
+    .main-section .expertise .exp-card {
+        border-bottom: none;
+    }
+    .main-section .expertise .exp-card:nth-child(2),
+    .main-section .expertise .exp-card:nth-child(3) {
+        border-left: 1px solid rgb(193, 194, 195, 0.3);
+    }
+
+    /* service card section */
+    
+    
+    /* device solution section */
+    .solutions {
+        max-width: 700px;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 60px;
+    }
+    .solution {
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .section-bottom .expertise .exp-card {
+        width: 30%;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .home-content {
+        width: 80%;
+        padding-block-start: 140px;
+    }
+
+    .home-inner .heading {
+        flex-direction: row;
+        margin-block: 80px;
+        gap: 36px;
+    }
+    .home-inner .heading h2 {
+        font-size: 42px;
+    }
+    .topper::before {
+        font-size: 14px;
+    }
+    .home-inner .heading h1 {
+        font-size: 128px;
+        z-index: 1;
+    }
+    
+    .home-container .home-img {
+        top: -120px;
+        scale: 1.2;
+    }
+
+
+    .status-container {
+        margin-top: -340px;
+    }
+    .status-container .left,
+    .status-container .right {
+        max-width: 19%;
+    }
+    .home-bottom {
+        width: 550px;
+        margin-inline: auto;
+        margin-block-start: 120px;
+    }
+    
+    /* main-section */
+    .main-section {
+        width: 80%;
+        margin-block-start: 140px;
+    }
+    .main-section .expertise .exp-card img {
+        width: 60px;
+        height: 60px;
+    }
+    .main-section .expertise .exp-card {
+        gap: 24px;
+        padding: 32px 24px;
+    }
+
+    /* service card section */
+    .servicecard-text {
+        width: 700px;
+    }
+    
+    
+    /* device solution section */
+    .solutions {
+        max-width: 600px;
+    }
+    .section-bottom .expertise .exp-card {
+        width: 30%;
+    }
+}
