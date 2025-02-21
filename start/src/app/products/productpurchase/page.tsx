@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Header from "@/sections/Header";
 import S23ultra from "@/assets/images/S23ultra.jpg";
-import { Footer } from "@/sections/Footer";
+import Footer from "@/sections/Footer";
 
 export default function AddDeliveryDetails() {
   return (
@@ -288,7 +288,7 @@ export default function AddDeliveryDetails() {
               <p>LKR 368100.00</p>
             </div>
             <p className="text-sm text-gray-400 mt-4">
-              Upon clicking "Place Order," I confirm I have read and
+              Upon clicking &ldquo;Place Order,&rdquo; I confirm I have read and
               acknowledged all terms and policies.
             </p>
           </aside>

@@ -1,6 +1,6 @@
 import Header from "@/sections/Header";
 import Link from "next/link";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 
 import plap1 from "@/assets/images/plap1.png";
 import plap2 from "@/assets/images/plap2.png";
@@ -11,7 +11,15 @@ import S23ultra from "@/assets/images/S23ultra.jpg";
 import cart from "@/assets/icons/cart.png";
 import left from "@/assets/icons/left.png";
 import { px } from "framer-motion";
-import { Footer } from "@/sections/Footer";
+import Footer from "@/sections/Footer";
+
+interface Product {
+  name: string;
+  price: string;
+  stock: boolean;
+  image: StaticImageData;
+}
+
 
 const ProductDetails = () => {
   return (
@@ -139,7 +147,7 @@ const ProductDetails = () => {
                 image: pphone2,
               },
             ].map((product, index) => (
-              <div className="w-full rounded relative">
+              <div key={`product-${index}`} className="w-full rounded relative">
                 <Image
                   src={product.image}
                   alt={product.name}

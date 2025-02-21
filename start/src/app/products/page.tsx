@@ -11,6 +11,7 @@ import pcctv1 from "@/assets/images/pcctv1.png"
 import HeroProduct from "@/assets/images/hero_product.png";
 import Header from "@/sections/Header";
 import { useEffect, useState } from "react";
+import { Navbar } from "@nextui-org/react";
 
 interface Product {
   _id: string;
@@ -62,6 +63,7 @@ function ProductsPage() {
 
   return (
     <div>
+      <Header/>
       <HeroSection heroImage={HeroProduct.src} />
 
       <div className="sm:ml-8 ml-14">
