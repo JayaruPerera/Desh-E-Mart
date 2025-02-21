@@ -1,6 +1,8 @@
 
 # Ignore node_modules  
-node_modules/
+/node_modules
+/.pnp
+.pnp.js
 
 # Debug files  
 npm-debug.log*  
@@ -17,4 +19,6 @@ yarn-error.log*
 *.tsbuildinfo  
 next-env.d.ts  
 
+# next.js
 /.next/
+/out/

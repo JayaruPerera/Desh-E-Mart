@@ -21,7 +21,7 @@ async function connectDB() {
     //   useCreateIndex: true,
     };
 
-        cached.promise = mongoose.connect('${process.env.MONGODB_URI}/jayaru', opts).then((mongoose) => {
+        cached.promise = mongoose.connect(`${process.env.MONGODB_URI}/jayaru`, opts).then((mongoose) => {
       return mongoose;
     });
   }
