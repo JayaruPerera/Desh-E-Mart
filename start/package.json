@@ -21,14 +21,19 @@
     "axios": "^1.7.9",
     "formidable": "^3.5.2",
     "framer-motion": "^11.15.0",
+    "inngest": "^3.31.11",
     "mongodb": "^6.12.0",
-    "mongoose": "^8.9.2",
+    "mongoose": "^8.10.1",
     "next": "14.2.5",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^5.4.0",
     "react-loader-spinner": "^6.1.6",
+
     "stripe": "^17.6.0",
+
+    "sharp": "^0.33.5",
+
     "tailwind-merge": "^2.4.0"
   },
   "devDependencies": {
