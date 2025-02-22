@@ -1,6 +1,5 @@
 import React from 'react';
 import Image, { StaticImageData } from 'next/image';
-
 interface ProductProps {
     inStock: boolean; 
     title: string;
@@ -40,7 +39,6 @@ const ProductCard = ({ title, description, price, imageUrl, inStock }:ProductPro
             LKR {price}
         </p>
 
-        {/* Buttons */}
         <div className="flex space-x-2">
             <button className="flex-1 bg-[#FCFDFF] text-[#161A1D] text-[14px] font-medium py-2 px-4 rounded hover:bg-[#FCFDFF] hover:opacity-90 transition duration-300">
                 Buy Now

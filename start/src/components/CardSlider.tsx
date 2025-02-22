@@ -5,7 +5,6 @@ import ProductCard from './ProductCard';
 import { products } from '../assets/images/data';
 import { StaticImageData } from 'next/image';
 
-// Product interface
 interface Product {
   inStock: boolean;
   title: string;
@@ -55,7 +54,6 @@ const CardSlider = ({ heading }: SliderProps) => {
 
         <br />
 
-        {/* Buttons */}
         <div className="slider-btn flex flex-row gap-[24px] absolute right-0 bottom-[-24px]">
           <button
             onClick={scrollLeft}
