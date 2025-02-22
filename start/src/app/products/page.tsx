@@ -1,3 +1,4 @@
+'use client';
 import HeroSection from "./hero";
 import Link from "next/link";
 import Image from "next/image";
@@ -49,7 +50,8 @@ function ProductsPage() {
                 display, and smooth performance.</p>
                 <p className="font-bold md:text-[18px] sm:text-[16px]">LKR 325500.00</p>
         <button className="w-full mt-4 px-4 py-2 bg-white text-black font-bold rounded hover:bg-[#9D1CAC] transition duration-300 md:text-sm sm:text-[14px]">
-            Buy Now
+            <Link href="/products/productdetails"> Buy Now </Link>
+            
         </button>
         </div>
 
