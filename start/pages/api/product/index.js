@@ -1,4 +1,3 @@
-
 import formidable from 'formidable';
 import dbConnect from '../../../src/lib/db';
 import Product from '../../../models/Product';

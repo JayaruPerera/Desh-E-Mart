@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import React, { useState, useEffect } from "react";
 
 interface Product {
@@ -18,7 +19,7 @@ const ProductList: React.FC = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/product");
+        const response = await fetch("https://desh-e-mart.vercel.app/api/product");
         const res = await response.json();
         console.log("Fetched products:", res); 
         setProducts(res.data); 
@@ -49,7 +50,7 @@ const ProductList: React.FC = () => {
             key={product._id}
             className="rounded-lg bg-gray-200 shadow-md overflow-hidden cursor-pointer hover:bg-gray-300"
           >
-            <img
+          <img
               src={product.image}
               alt={product.title}
               className="w-full h-48 object-cover"
