@@ -21,6 +21,7 @@ function ProductsPage() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -39,10 +40,19 @@ function ProductsPage() {
   }, []);
 
   const filteredProducts = loading
-    ? []
-    : selectedCategory === "All"
-    ? products
-    : products.filter((product) => product.category === selectedCategory);
+  ? []
+  : products
+      .filter((product) =>
+        selectedCategory === "All"
+          ? true
+          : product.category === selectedCategory
+      )
+      .filter(
+        (product) =>
+          product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          product.description.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+
 
   if (loading) {
     return <div>Loading products...</div>;
@@ -57,7 +67,8 @@ function ProductsPage() {
   return (
     <div>
       <Header />
-      <HeroSection heroImage={HeroImage.src} /> {/* Add the hero image here */}
+      <HeroSection heroImage={HeroImage.src} searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+ {/* Add the hero image here */}
       <div className="sm:ml-8 ml-14">
         <h1 className="font-bold mb-4 mt-12">Filter your selections</h1>
         <div className="flex gap-4 flex-wrap">
