@@ -282,7 +282,7 @@ export default function CheckoutForm({ setLoading, orderTotal }: CheckoutFormPro
             </label>
           </div>
 
-          <div className="flex items-center space-x-4 p-6 rounded-lg bg-gray-700 border border-gray-600 hover:border-gray-500 transition-colors">
+          {/* <div className="flex items-center space-x-4 p-6 rounded-lg bg-gray-700 border border-gray-600 hover:border-gray-500 transition-colors">
             <input
               type="radio"
               id="cod"
@@ -298,7 +298,7 @@ export default function CheckoutForm({ setLoading, orderTotal }: CheckoutFormPro
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
               </svg>
             </label>
-          </div>
+          </div> */}
         </div>
 
         {paymentMethod === 'card' && (

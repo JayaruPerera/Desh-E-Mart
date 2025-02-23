@@ -178,8 +178,8 @@ const handleSubmit = async (e:FormEvent ) => {
 
     
     try {
-      console.log("first", formData) //http://localhost:3000/api/product
-      const res = await fetch('https://desh-e-mart.vercel.app/api/product', {
+      console.log("first", formData) //http://localhost:3000/api/product     https://desh-e-mart.vercel.app
+      const res = await fetch('http://localhost:3000/api/product', {
         method: 'POST',
         body: formData,
       });
