@@ -13,6 +13,7 @@ import Header from "@/sections/Header";
 import { useEffect, useState } from "react";
 import { Navbar } from "@nextui-org/react";
 
+//Helps TypeScript ensure products follow this structure.
 interface Product {
   _id: string;
   title: string;
@@ -23,32 +24,32 @@ interface Product {
 }
 
 function ProductsPage() {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [selectedCategory, setSelectedCategory] = useState<string>("All");
+  const [products, setProducts] = useState<Product[]>([]);   //products: Stores fetched product data.
+  const [loading, setLoading] = useState<boolean>(true);   //loading: Tracks if data is being fetched.
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");  //selectedCategory: Stores the selected filter category.
 
-  useEffect(() => {
+  useEffect(() => {                //Uses useEffect to fetch product data when the component mounts.
     const fetchProducts = async () => {
-      try {
-        const response = await fetch("https://desh-e-mart.vercel.app/api/product");
-        const res = await response.json();
+      try {                             //http://localhost:3000/api/product   ..//https://desh-e-mart.vercel.app
+        const response = await fetch("http://desh-e-mart.vercel.app/api/product");
+        const res = await response.json();   //Fetches product data from the API.
         console.log("Fetched products:", res);
-        setProducts(res.data);
+        setProducts(res.data);  //Sets the fetched product data to the products state.
       } catch (error) {
         console.error("Error fetching products:", error);
       } finally {
-        setLoading(false);
+        setLoading(false);      //Sets loading to false when done.
       }
     };
 
-    fetchProducts();
+    fetchProducts();    //Calls fetchProducts when the component mounts.
   }, []);
 
   const filteredProducts = loading
-    ? []
+    ? []        //If loading is true, it returns an empty array.
     : selectedCategory === "All"
-    ? products
-    : products.filter((product) => product.category === selectedCategory);
+    ? products  //If "All" is selected, it shows all products.
+    : products.filter((product) => product.category === selectedCategory);   //Otherwise, it filters products by the selected category.
 
   if (loading) {
     return <div>Loading products...</div>;
@@ -66,8 +67,10 @@ function ProductsPage() {
       <HeroSection heroImage={HeroProduct.src} />
 
       <div className="sm:ml-8 ml-14">
-        <h1 className="font-bold mb-4 mt-12">Filter your selections</h1>
+        <h1 className="font-bold mb-4 mt-12">Filter your selections</h1>  
         <div className="flex gap-4 flex-wrap">
+
+          {/* //Clicking a button updates selectedCategory, which re-filters products. */}
           <button
             className={`lg:px-8 lg:py-3 md:px-6 md:py-2 sm:px-4 sm:py-1 font-bold rounded-full  md:text-sm sm:text-xs ${
               selectedCategory === "All"
@@ -114,6 +117,12 @@ function ProductsPage() {
     </div>
 
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mt-10 lg:px-12 justify-items-center">
+    {/* Maps through filteredProducts and displays:
+      Product image
+      Title
+      Description
+      Price (formatted)
+      "Buy Now" button (linked to Stripe checkout) */}
     {filteredProducts.map((product) => (
     <div key={product._id} className="sm:ml-8 mt-10 ml-14 lg:w-[226px] md:w-[200px] sm:w-[130px] h-auto flex flex-col justify-between">
         <Image
