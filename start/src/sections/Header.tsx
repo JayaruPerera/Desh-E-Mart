@@ -16,15 +16,15 @@ const Header = () => {
     setMenuOpen(!menuOpen);
   }
 
-  return (<nav className="z-50 fixed w-full h-14">
+  return (<nav className="z-50 fixed w-full h-20">
 
-    <div className="flex  h-full w-full items-center px-4 md:px-16 lg:px-24 bg-[#161a1dc5]">
+    <div className="flex  h-full w-full items-center px-4 md:px-16 lg:px-24 bg-[#161A1D]/90">
       <Link href="/">
       <Image
       src={Logo}
       alt="Logo"
-      width={130}
-      height={100}
+      width={160}
+      height={160}
       className="cursor-pointer"
       priority
       />
