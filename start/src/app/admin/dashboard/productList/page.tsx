@@ -20,7 +20,7 @@ const ProductList: React.FC = () => {
     const fetchProducts = async () => {
       try { 
         ////http://localhost:3000/api/product  ..https://desh-e-mart.vercel.app
-        const response = await fetch("http://desh-e-mart.vercel.app/api/product");
+        const response = await fetch("https://desh-e-mart.vercel.app/api/product");
         const res = await response.json();
         console.log("Fetched products:", res); 
         setProducts(res.data); 
