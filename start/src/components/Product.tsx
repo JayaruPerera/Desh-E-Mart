@@ -1,58 +1,64 @@
 'use client';
 import { Button } from "@nextui-org/button";
 import Link from "next/link";
-import {handleFormSubmit} from '../action/action'
-import React, { FormEvent, useState } from "react";
+import {handleFormSubmit} from '../action/action'       //Handles form submission logic.
+import React, { FormEvent, useEffect, useState } from "react";       // FormEvent: Type for form events (TypeScript).
 import { Oval } from "react-loader-spinner";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";       //For navigation (redirecting after submission).
+import { Product as ProductType } from '@/types/product';
 
-export default function Product() {
+interface ProductProps {
+    mode: 'create' | 'edit';
+    initialData?: ProductType;
+  }
+
+  export default function Product({ mode, initialData }: ProductProps) {
     const router = useRouter();
-    const [isUploading, setIsUploading] = useState(false)
-    const [fileName, setFileName] = useState('')
+    const [isUploading, setIsUploading] = useState(false)    //Indicates if an image upload is in progress.
+    const [fileName, setFileName] = useState(initialData?.image || '');        //Stores the name of the uploaded file.
 
-    const [productData, setProductData] = useState({
-        title: '',
-        category: 'Mobile Phone',
-        price: '',
-        image: '',
-        description: '',
+    const [productData, setProductData] = useState({           //Holds the product details entered by the user.
+        title: initialData?.title || '',
+        category: initialData?.category || 'Mobile Phone',
+        // Add null check and type handling for price
+        price: initialData?.price ? String(initialData.price) : '',
+        image: initialData?.image || '',
+        description: initialData?.description || ''
       });
 
-      const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-        const { name, value } = e.target;
-        setProductData((prev)=>({...prev, [name]:value}))
+      //Handling Input Changes
+      const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {   //Handles input changes.
+        const { name, value } = e.target;  //Extracts the name and value of the input field.
+        setProductData((prev)=>({...prev, [name]:value}))  //Updates the productData state with the new value.
       };
 
 
-
-    const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (!e.target.files || e.target.files.length === 0) {
-          alert('No file selected.');
+      //Handling File Upload
+    const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {   //Handles image file upload.
+        if (!e.target.files || e.target.files.length === 0) {   //Checks if a image file has been selected.
+          alert('No file selected.');        
           return;
         }
       
-        const file = e.target.files[0];
-        setIsUploading(true);
+        const file = e.target.files[0];   //Extracts the selected image file.
+        setIsUploading(true);               //Sets isUploading to true to indicate that an upload is in progress.
       
-        try {
-          const formData = new FormData();
-          formData.append('my-file', file);
+        try {                                   //Attempts to upload the image file.  
+          const formData = new FormData();      
+          formData.append('my-file', file);     //Appends the image file to the FormData object.
       
-          const result = await handleFormSubmit(productData, formData); // Ensure the correct data is passed
-          if (result?.status === 'success') {
-            console.log('Upload result:', result);
-            console.log('Uploaded path:', result?.path);
-            setFileName(result.fileName || '');
-            setProductData({ ...productData, image: result?.path || '' });
-          } else {
-            alert('Error uploading image: ' + (result?.message || 'Unknown error'));
-          }
+          const result = await handleFormSubmit(productData, formData);
+            if (result?.status === 'success') {
+                setFileName(result.fileName || '');
+                setProductData({ ...productData, image: result?.path || '' });
+            } else {
+                alert('Error uploading image: ' + (result?.message || 'Unknown error'));
+            }
         } catch (error: unknown) {
-          console.error('Error uploading image:', error);
-          alert('Error uploading image. Please try again.');
+            console.error('Error uploading image:', error);
+            alert('Error uploading image. Please try again.');
         } finally {
-          setIsUploading(false);
+            setIsUploading(false);
         }
       };
       
@@ -143,71 +149,90 @@ export default function Product() {
 //         }
     
 //   };
-const handleSubmit = async (e:FormEvent ) => {
-    e.preventDefault();
+
+//Handling Form Submission
+const handleSubmit = async (e:FormEvent ) => {    
+    e.preventDefault();   //Prevents the default form submission behavior.
 
     // console.log("Submitting product:", productData); 
 
     // Ensure productData is properly structured
-    if (!productData.title || !productData.category || !productData.price || !productData.description) {
+    if (!productData.title || !productData.category || !productData.price || !productData.description) {      //Checks if all fields are filled.
         alert('All fields are required!');
         return;
     }
+ 
+    // if (!productData.image) {                     //Checks if an image has been uploaded.
+    //     alert('Please upload an image.');
+    //     return;
+    // }
 
-    if (!productData.image) {
-        alert('Please upload an image.');
-        return;
-    }
-
-    const formData = new FormData();
-    formData.append('title', productData.title);
-    formData.append('category', productData.category);
+    const formData = new FormData();                     //Creates a new FormData object.
+    formData.append('title', productData.title);            //Appends the product details to the FormData object.
+    formData.append('category', productData.category);     
     formData.append('price', productData.price);
     formData.append('description', productData.description);
-    formData.append('image', productData.image);
+    // formData.append('image', productData.image);
 
+    if (productData.image) {
+        formData.append('image', productData.image);
+    }
 
     console.log("formData", formData)
 
     // for (let pair of formData.entries()) {
     //   console.log(pair[0] + ': ' + pair[1]);
     // }
-    for (const [key, value] of Array.from(formData.entries())) {
-        console.log(`${key}: ${value}`);
-    }
+    // for (const [key, value] of Array.from(formData.entries())) {        //Iterates over the FormData entries.
+    //     console.log(`${key}: ${value}`);           //Logs the key-value pairs.
+    // } 
 
     
     try {
-      console.log("first", formData) //http://localhost:3000/api/product
-      const res = await fetch('https://desh-e-mart.vercel.app/api/product', {
-        method: 'POST',
-        body: formData,
-      });
-
-      const data = await res.json();
-      if (res.ok) {
-        alert('Product added successfully!');
-        setProductData({
-            title: '',
-            category: 'Mobile Phone',
-            price: '',
-            description: '',
-            image: ''
-        })
-        setFileName('')
-      } else {
-        console.error('Error adding product:', data.error);
-        alert('Error adding product: ' + data.error);
+        const url = mode === 'edit' 
+          ? `http://desh-e-mart.vercel.app/api/product?id=${initialData?._id}`
+          : 'http://desh-e-mart.vercel.app/api/product';
+  
+        const method = mode === 'edit' ? 'PUT' : 'POST';
+  
+        const res = await fetch(url, {
+          method,
+          body: formData,
+        });
+  
+        const data = await res.json();
+        if (res.ok) {
+          alert(`Product ${mode === 'edit' ? 'updated' : 'added'} successfully!`);
+          router.push('/admin/dashboard/products');
+        } else {
+          console.error(`Error ${mode === 'edit' ? 'updating' : 'adding'} product:`, data.error);
+          alert(`Error ${mode === 'edit' ? 'updating' : 'adding'} product: ` + data.error);
+        }
+      } catch (error) {
+        console.error('Error during fetch:', error);
+        alert(`An error occurred while ${mode === 'edit' ? 'updating' : 'adding'} the product.`);
       }
-    } catch (error) {
-      console.error('Error during fetch:', error);
-      alert('An error occurred while adding the product.');
-    }
   };
+
+// Add useEffect to update form when initialData changes
+useEffect(() => {
+    if (mode === 'edit' && initialData) {
+        setProductData({
+            title: initialData.title || '',
+            category: initialData.category || 'Mobile Phone',
+            // Safe conversion of price
+            price: initialData.price ? String(initialData.price) : '',
+            image: initialData.image || '',
+            description: initialData.description || ''
+        });
+        setFileName(initialData.image || '');
+    }
+}, [initialData, mode]);
 
 
     return (
         <>
+        {/* Input fields for product details. */}
         <div className="lg:mx-auto max-w-screen-lg sm:mx-10 md:mx-16">
         <form onSubmit={handleSubmit}>
             <div className="my-4">
@@ -326,7 +351,7 @@ const handleSubmit = async (e:FormEvent ) => {
                                 type="file" 
                                 name="image" 
                                 className="sr-only" 
-                                onChange={handleFileChange} accept="image/**" required />
+                                onChange={handleFileChange} accept="image/**"/>
                             </label>
                         </div>
                     </div>

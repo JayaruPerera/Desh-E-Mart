@@ -1,8 +1,5 @@
 import Product from "@/components/Product";
 
-
-
-
 function NewProduct() {
     return ( 
         <>

@@ -19,13 +19,13 @@ export default function Dashboard() {
       <div className="flex items-center gap-4">
        <div>
        <div>
-            <Link href="/admin/dashboard">
+            <Link href="/products">
                 <Button color="secondary" variant="shadow" className="mt-6" size="lg" >View Products</Button>
             </Link>
         </div>
        </div>
         <div>
-            <Link href="/admin/dashboard">
+            <Link href="/">
                 <Button color="secondary" variant="shadow" className="mt-6" size="lg">View Shop</Button>
             </Link>
         </div>
