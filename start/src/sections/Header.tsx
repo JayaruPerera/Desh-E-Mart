@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Logo from "@/assets/images/logo.png";
+import Logo from "@/assets/images/navLogo.png";
 import Link from "next/link";
 import { AiOutlineMenu, AiOutlineClose, AiOutlineInstagram, AiOutlineFacebook, AiOutlineYoutube } from "react-icons/ai";
 import { useState } from "react";
@@ -16,14 +16,14 @@ const Header = () => {
     setMenuOpen(!menuOpen);
   }
 
-  return (<nav className="z-50 fixed w-full h-24">
+  return (<nav className="z-50 fixed w-full h-14">
 
-    <div className="flex  h-full w-full items-center px-4 md:px-16 lg:px-24">
+    <div className="flex  h-full w-full items-center px-4 md:px-16 lg:px-24 bg-[#161a1dc5]">
       <Link href="/">
       <Image
       src={Logo}
       alt="Logo"
-      width={100}
+      width={130}
       height={100}
       className="cursor-pointer"
       priority
@@ -32,18 +32,18 @@ const Header = () => {
 
       {/*Navbar links*/}
       <div className="hidden md:flex ml-auto">
-        <ul className="hidden sm:flex">
+        <ul className="hidden sm:flex sm:text-[10px] md:text-[14px] lg:text-[16px] ml-10  gap-12">
         <Link href="/">
-          <li className="ml-10 uppercase hover:border-b sm:text-sm md:text-lg lg:text-xl">Home</li>
+          <li className="hover:opacity-80">Home</li>
         </Link>
         <Link href={`/products`}>
-          <li className="ml-10 uppercase hover:border-b sm:text-sm md:text-lg lg:text-xl">Products</li>
+          <li className="hover:opacity-80">Products</li>
         </Link>
         <Link href={`/about`}>
-          <li className="ml-10 uppercase hover:border-b sm:text-sm md:text-lg lg:text-xl">About</li>
+          <li className="hover:opacity-80">About</li>
         </Link>
         <Link href={"/contact"}>
-          <li className="ml-10 uppercase hover:border-b sm:text-sm md:text-lg lg:text-xl">Contact</li>
+          <li className="hover:opacity-80">Contact</li>
         </Link>
         </ul>
       </div>
@@ -54,12 +54,12 @@ const Header = () => {
           {isSignedIn ? (
             <UserButton afterSignOutUrl="/" />
           ) : (
-            <ul className="flex space-x-4">
+            <ul className="flex space-x-8 sm:space-x-4 justify-start items-center">
               <Link href="/sign-in">
-                <li className="uppercase hover:border-b sm:text-sm md:text-lg lg:text-xl">Sign In</li>
+                <li className="sm:text-[12px] md:text-[14px] lg:text-[16px]">Sign In</li>
               </Link>
               <Link href="/sign-up">
-                <li className="uppercase hover:border-b sm:text-sm md:text-lg lg:text-xl">Sign Up</li>
+                <li className="sm:text-[12px] md:text-[14px] lg:text-[16px] text-[#161A1D] py-3 px-4 rounded-full bg-[#FCFDFF]">Sign Up</li>
               </Link>
             </ul>
           )}

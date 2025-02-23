@@ -12,6 +12,7 @@ import HeroProduct from "@/assets/images/hero_product.png";
 import Header from "@/sections/Header";
 import { useEffect, useState } from "react";
 import { Navbar } from "@nextui-org/react";
+import Footer from "@/sections/Footer";
 
 //Helps TypeScript ensure products follow this structure.
 interface Product {
@@ -144,6 +145,7 @@ function ProductsPage() {
     </div>
     ))}
         </div>
+        <Footer/>
       </div>
   );
 }
