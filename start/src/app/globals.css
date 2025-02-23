@@ -7,3 +7,15 @@
         @apply 
     }
 }
+
+.StripeElement {
+    @apply bg-gray-700 p-3 rounded-lg border border-gray-600;
+  }
+  
+  .StripeElement--focus {
+    @apply border-red-600 ring-1 ring-red-600 ring-opacity-50;
+  }
+  
+  .StripeElement--invalid {
+    @apply border-red-500;
+  } 
