@@ -14,7 +14,7 @@ export default function EditProduct() {
     const fetchProduct = async () => {
       if (!params?.id) return;
       try {
-        console.log("Fetching product with ID:", params.id);
+        console.log("Fetching product with ID:", params.id);     //localhost:3000/api/product 
         const response = await fetch(`http://desh-e-mart.vercel.app/api/product?id=${params?.id}`);
         const data = await response.json();
 
