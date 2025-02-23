@@ -167,7 +167,7 @@ const handleSubmit = async (e:FormEvent ) => {
     //     return;
     // }
 
-    const formData = new FormData();                     //Creates a new FormData object.
+    const formData = new FormData();                     //Creates a new FormData object
     formData.append('title', productData.title);            //Appends the product details to the FormData object.
     formData.append('category', productData.category);     
     formData.append('price', productData.price);
@@ -190,8 +190,8 @@ const handleSubmit = async (e:FormEvent ) => {
     
     try {
         const url = mode === 'edit' 
-          ? `http://localhost:3000/api/product?id=${initialData?._id}`
-          : 'http://localhost:3000/api/product';
+          ? `https://desh-e-mart.vercel.app/api/product?id=${initialData?._id}`
+          : 'https://desh-e-mart.vercel.app/api/product';
   
         const method = mode === 'edit' ? 'PUT' : 'POST';
   
