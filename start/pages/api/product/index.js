@@ -2,12 +2,6 @@ import formidable from 'formidable';
 import dbConnect from '../../../src/lib/db';
 import Product from '../../../models/Product';
 
-const corsMiddleware = cors({
-    origin: 'ttps://desh-e-mart.vercel.app',  
-    methods: ['GET', 'POST'],
-   
-  });
-
 export const config = {
     api: {
         bodyParser: false,
