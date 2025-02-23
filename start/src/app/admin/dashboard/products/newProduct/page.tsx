@@ -1,3 +1,5 @@
+'use client';
+
 import Product from "@/components/Product";
 
 function NewProduct() {
@@ -23,7 +25,7 @@ function NewProduct() {
 
   <hr className="my-2 h-px border-0 bg-purple-600"/>
         <div className="my-10">
-            <Product />
+            <Product mode="create" />
         </div>
         </>
 
