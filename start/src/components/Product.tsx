@@ -167,7 +167,7 @@ const handleSubmit = async (e:FormEvent ) => {
     //     return;
     // }
 
-    const formData = new FormData();                     //Creates a new FormData object.
+    const formData = new FormData();                     //Creates a new FormData object
     formData.append('title', productData.title);            //Appends the product details to the FormData object.
     formData.append('category', productData.category);     
     formData.append('price', productData.price);
