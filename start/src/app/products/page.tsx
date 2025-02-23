@@ -1,5 +1,7 @@
 'use client';
 
+'use client';
+
 import HeroSection from "./hero";
 import HeroImage from "@/assets/images/hero_product.png";
 import Link from "next/link";

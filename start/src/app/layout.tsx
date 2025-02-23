@@ -9,11 +9,11 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { NextUIProvider } from "@nextui-org/react";
 import Provider from "./Provider";
 
-
-const oxygen = Oxygen ({
+const oxygen = Oxygen({
   subsets: ["latin"],
-  variable: "--font-oxygen",
   weight: ["400", "700"],
+  variable: "--font-oxygen",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -27,17 +27,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    
-      <ClerkProvider>
-
-    <html lang="en" className="dark">
-      <body className={twMerge(oxygen.variable, "bg-[#161A1D] text-white antialiased font-oxygen")} >
-        <Provider>
-        {children}
-        </Provider>
-
-      </body>
-    </html>
-        </ClerkProvider>
+    <ClerkProvider>
+      <html lang="en" className={`dark ${oxygen.variable}`}>
+        <body
+          className={twMerge("bg-[#161A1D] text-white antialiased font-oxygen")}
+        >
+          <Provider>{children}</Provider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

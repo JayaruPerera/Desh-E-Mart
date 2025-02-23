@@ -26,7 +26,7 @@ const config: Config = {
     },
     extend: {
       fontFamily: {
-        oxygen: ["var(--font-oxygen)"],
+        oxygen: ["var(--font-oxygen)",'sans-serif'],
       }
     },
   },
