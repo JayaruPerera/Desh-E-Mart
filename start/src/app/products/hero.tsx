@@ -1,3 +1,5 @@
+'use client';
+
 import HeroProduct from "@/assets/images/hero_product.png";
 import { FC, useState } from "react";
 import Image from "next/image";
