@@ -54,10 +54,9 @@ function ProductsPage() {
   const filteredProducts = loading
     ? []
     : products.filter((product) => {
-        const matchesCategory = selectedCategory === "All" || product.category === selectedCategory;
-        const matchesSearch = searchQuery === "" || product.title.toLowerCase().includes(searchQuery.toLowerCase());
-        return matchesCategory && matchesSearch;
-      });
+      const matchesSearch = searchQuery === "" || product.title.toLowerCase().includes(searchQuery.toLowerCase());
+      return matchesSearch;
+    });
 
   if (loading) {
     return <div>Loading products...</div>;
