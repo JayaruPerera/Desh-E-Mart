@@ -28,7 +28,6 @@ function ProductsPage() {
   const [products, setProducts] = useState<Product[]>([]);   //products: Stores fetched product data.
   const [loading, setLoading] = useState<boolean>(true);   //loading: Tracks if data is being fetched.
   const [selectedCategory, setSelectedCategory] = useState<string>("All");  //selectedCategory: Stores the selected filter category.
-  const [searchQuery, setSearchQuery] = useState<string>("");
 
   useEffect(() => {                //Uses useEffect to fetch product data when the component mounts.
     const fetchProducts = async () => {
@@ -47,32 +46,26 @@ function ProductsPage() {
     fetchProducts();    //Calls fetchProducts when the component mounts.
   }, []);
 
-  const handleSearch = (query: string) => {
-    setSearchQuery(query);
-  };
-
   const filteredProducts = loading
-    ? []
-    : products.filter((product) => {
-        const matchesCategory = selectedCategory === "All" || product.category === selectedCategory;
-        const matchesSearch = searchQuery === "" || product.title.toLowerCase().includes(searchQuery.toLowerCase());
-        return matchesCategory && matchesSearch;
-      });
+    ? []        //If loading is true, it returns an empty array.
+    : selectedCategory === "All"
+    ? products  //If "All" is selected, it shows all products.
+    : products.filter((product) => product.category === selectedCategory);   //Otherwise, it filters products by the selected category.
 
   if (loading) {
     return <div>Loading products...</div>;
   }
 
-  // const buttonStyle = (category: string) => {
-  //   return selectedCategory === category
-  //     ? "lg:px-8 lg:py-3 md:px-6 md:py-2 sm:px-4 sm:py-1 bg-white text-black font-bold rounded-full hover:bg-gray-500 md:text-sm sm:text-xs"
-  //     : "lg:px-8 lg:py-3 md:px-6 md:py-2 sm:px-4 sm:py-1 text-white font-bold rounded-full hover:bg-gray-500 border border-white border-opacity-70 md:text-sm sm:text-xs";
-  // };
+  const buttonStyle = (category: string) => {
+    return selectedCategory === category
+      ? "lg:px-8 lg:py-3 md:px-6 md:py-2 sm:px-4 sm:py-1 bg-white text-black font-bold rounded-full hover:bg-gray-500 md:text-sm sm:text-xs"
+      : "lg:px-8 lg:py-3 md:px-6 md:py-2 sm:px-4 sm:py-1 text-white font-bold rounded-full hover:bg-gray-500 border border-white border-opacity-70 md:text-sm sm:text-xs";
+  };
 
   return (
     <div>
       <Header />
-      <HeroSection heroImage={HeroProduct.src} onSearch={handleSearch} />
+      <HeroSection heroImage={HeroProduct.src} />
 
       <div className="sm:ml-8 ml-14">
         <h1 className="font-bold mb-4 mt-12">Filter your selections</h1>  

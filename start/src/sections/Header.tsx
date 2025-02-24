@@ -6,12 +6,11 @@ import Link from "next/link";
 import { AiOutlineMenu, AiOutlineClose, AiOutlineInstagram, AiOutlineFacebook, AiOutlineYoutube } from "react-icons/ai";
 import { useState } from "react";
 import { twMerge } from "tailwind-merge";
-import { UserButton, useAuth, useUser } from "@clerk/nextjs";
+import { UserButton, useAuth } from "@clerk/nextjs";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { isSignedIn, user } = useUser();
-  const isAdmin = user?.publicMetadata?.role === "admin";
+  const { isSignedIn } = useAuth();
 
   const handleNav = () => {
     setMenuOpen(!menuOpen);
@@ -46,12 +45,7 @@ const Header = () => {
         <Link href={"/contact"}>
           <li className="hover:opacity-80">Contact</li>
         </Link>
-        {isSignedIn && isAdmin && (
-      <Link href="/admin/dashboard">
-        <li className="hover:opacity-80">Dashboard</li>
-      </Link>
-    )}
-  </ul>
+        </ul>
       </div>
 
       {/*User buttons*/}
@@ -131,14 +125,6 @@ const Header = () => {
                 Contact
             </li>
           </Link>
-          <Link href="/admin/dashboard">
-        <li
-          onClick={() => setMenuOpen(false)}
-          className="py-4 cursor-pointer"
-        >
-          Dashboard
-        </li>
-      </Link>
         </ul>
       </div>
 
