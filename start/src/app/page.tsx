@@ -326,7 +326,16 @@ export default function Home() {
           </div>
         </div>
       </div>
-
+      {/* google review part*/}
+      <div className="main-section">
+        <h3 className="section-header">
+          Find Us
+        </h3>
+        <div className="review">
+          <MapReview />
+          
+        </div>
+      </div>
       {/* footer */}
       <div className="nav-container">
         <Footer />

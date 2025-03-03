@@ -32,7 +32,7 @@ function ProductsPage() {
   useEffect(() => {                //Uses useEffect to fetch product data when the component mounts.
     const fetchProducts = async () => {
       try {                             //http://localhost:3000/api/product   ..//https://desh-e-mart.vercel.app
-        const response = await fetch("https://desh-e-mart.vercel.app/api/product");
+        const response = await fetch("http://localhost:3000/api/product ");
         const res = await response.json();   //Fetches product data from the API.
         console.log("Fetched products:", res);
         setProducts(res.data);  //Sets the fetched product data to the products state.
@@ -47,10 +47,12 @@ function ProductsPage() {
   }, []);
 
   const filteredProducts = loading
-    ? []        //If loading is true, it returns an empty array.
-    : selectedCategory === "All"
-    ? products  //If "All" is selected, it shows all products.
-    : products.filter((product) => product.category === selectedCategory);   //Otherwise, it filters products by the selected category.
+    ? []
+    : products.filter((product) => {
+      const matchesSearch = searchQuery === "" || product.title.toLowerCase().includes(searchQuery.toLowerCase());
+      const matchesCategory = selectedCategory === "All" || product.category === selectedCategory;
+      return matchesSearch && matchesCategory;
+    });
 
   if (loading) {
     return <div>Loading products...</div>;
@@ -137,7 +139,7 @@ function ProductsPage() {
             <p className="hidden text-justify sm:block text-sm md:text-[14px] truncate" title={product.description}>{product.description}</p>
             <p className="font-bold md:text-[18px] sm:text-[16px]">LKR {product.price.toLocaleString()}</p>
 
-    <Link href={"https://buy.stripe.com/test_aEU16B1HRdK98xy7sw?prefilled_email=lankeshpathmaraj%40gmail.com"}>
+    <Link href={`./checkout?price=${product.price}`}>
     <button className="w-full mt-4 px-4 py-2 bg-white text-black font-bold rounded hover:bg-[#9D1CAC] transition duration-300 md:text-sm sm:text-[14px]">
         Buy Now
     </button>
