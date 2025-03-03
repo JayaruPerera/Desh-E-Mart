@@ -113,9 +113,13 @@ function AccessoriesDetails() {
     },
   ];
 
+  const handleSearch = (query: string) => {
+    console.log("Searching for:", query);
+  };
+
   return (
     <div>
-      <HeroSection heroImage={HeroAssImage.src} />
+      <HeroSection heroImage={HeroAssImage.src} onSearch={handleSearch}/>
 
       <div className="sm:ml-8 ml-14">
         <h1 className="font-bold mb-4 mt-12">Filter your selections</h1>
