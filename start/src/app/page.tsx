@@ -5,7 +5,6 @@ import { icons } from '../assets/icons/assets.js'
 import CardSlider from "@/components/CardSlider";
 import Footer from "@/sections/Footer";
 import Link from "next/link";
-import MapReview from "@/components/MapReview";
 
 export default function Home() {
   return (
@@ -327,7 +326,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
       {/* google review part*/}
       <div className="main-section">
         <h3 className="section-header">
@@ -338,8 +336,6 @@ export default function Home() {
           
         </div>
       </div>
-
-
       {/* footer */}
       <div className="nav-container">
         <Footer />
