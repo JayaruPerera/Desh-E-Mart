@@ -70,7 +70,7 @@ const ProductsPage = () => {
     if (window.confirm("Are you sure you want to delete this product?")) {
       try {
         const response = await fetch(
-          `https://desh-e-mart.vercel.app/api/product  ?id=${productId}`,
+          `https://desh-e-mart.vercel.app/api/product?id=${productId}`,
           {
             method: "DELETE",
           }
