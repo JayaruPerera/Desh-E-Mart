@@ -187,10 +187,10 @@ const handleSubmit = async (e:FormEvent ) => {
     //     console.log(`${key}: ${value}`);           //Logs the key-value pairs.
     // } 
 
-    
+//    http://localhost:3000/api/product       https://desh-e-mart.vercel.app/api/product
     try {
         const url = mode === 'edit' 
-          ? `http://localhost:3000/api/product?id=${initialData?._id}`
+          ? `http://https://desh-e-mart.vercel.app/api/product?id=${initialData?._id}`
           : 'https://desh-e-mart.vercel.app/api/product  ';
   
         const method = mode === 'edit' ? 'PUT' : 'POST';
