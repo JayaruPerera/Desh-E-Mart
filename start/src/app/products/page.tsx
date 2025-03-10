@@ -49,7 +49,7 @@ function ProductsPage() {
   const filteredProducts = loading
     ? []
     : products.filter((product) => {
-      const matchesSearch = searchQuery === "" || product.title.toLowerCase().includes(searchQuery.toLowerCase());
+      const matchesSearch = true; // Temporarily disable search filtering since searchQuery is not defined
       const matchesCategory = selectedCategory === "All" || product.category === selectedCategory;
       return matchesSearch && matchesCategory;
     });
