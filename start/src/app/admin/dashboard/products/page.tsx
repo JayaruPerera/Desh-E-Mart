@@ -36,7 +36,7 @@ const ProductsPage = () => {
     const fetchProducts = async () => {
       try {
         //http://localhost:3000/api/product   ..//https://desh-e-mart.vercel.app
-        const response = await fetch("http://localhost:3000/api/product ");
+        const response = await fetch("https://desh-e-mart.vercel.app/api/product  ");
         const res = await response.json(); //Fetches product data from the API.
         console.log("Fetched products:", res);
         setProducts(res.data); //Sets the fetched product data to the products state.
@@ -70,7 +70,7 @@ const ProductsPage = () => {
     if (window.confirm("Are you sure you want to delete this product?")) {
       try {
         const response = await fetch(
-          `http://localhost:3000/api/product ?id=${productId}`,
+          `https://desh-e-mart.vercel.app/api/product  ?id=${productId}`,
           {
             method: "DELETE",
           }

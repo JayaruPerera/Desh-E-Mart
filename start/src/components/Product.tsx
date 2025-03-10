@@ -191,7 +191,7 @@ const handleSubmit = async (e:FormEvent ) => {
     try {
         const url = mode === 'edit' 
           ? `http://localhost:3000/api/product?id=${initialData?._id}`
-          : 'http://localhost:3000/api/product ';
+          : 'https://desh-e-mart.vercel.app/api/product  ';
   
         const method = mode === 'edit' ? 'PUT' : 'POST';
   
