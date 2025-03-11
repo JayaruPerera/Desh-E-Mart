@@ -4,13 +4,25 @@ import Image from "next/image";
 import Logo from "@/assets/images/navLogo.png";
 import Link from "next/link";
 import { AiOutlineMenu, AiOutlineClose, AiOutlineInstagram, AiOutlineFacebook, AiOutlineYoutube } from "react-icons/ai";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { twMerge } from "tailwind-merge";
-import { UserButton, useAuth } from "@clerk/nextjs";
+import { UserButton, useAuth, useUser } from "@clerk/nextjs";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { isSignedIn } = useAuth();
+  const { user } = useUser();
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  // Check if the current user is an admin
+  useEffect(() => {
+    if (user) {
+      const adminEmails = ["jayaruperera1998@gmail.com"];
+      const primaryEmail = user.primaryEmailAddress?.emailAddress;
+      
+      setIsAdmin(primaryEmail ? adminEmails.includes(primaryEmail) : false);
+    }
+  }, [user]);
 
   const handleNav = () => {
     setMenuOpen(!menuOpen);
@@ -45,6 +57,12 @@ const Header = () => {
         <Link href={"/contact"}>
           <li className="hover:opacity-80">Contact</li>
         </Link>
+        {/* Show Dashboard link only for admin users */}
+        {isAdmin && (
+          <Link href="/admin/dashboard">
+            <li className="hover:opacity-80">Dashboard</li>
+          </Link>
+        )}
         </ul>
       </div>
 
@@ -125,6 +143,17 @@ const Header = () => {
                 Contact
             </li>
           </Link>
+          {/* Show Dashboard link in mobile menu only for admin users */}
+          {isAdmin && (
+                <Link href="/admin/dashboard">
+                  <li
+                    onClick={() => setMenuOpen(false)}
+                    className="py-4 cursor-pointer"
+                  >
+                    Dashboard
+                  </li>
+                </Link>
+              )}
         </ul>
       </div>
 
