@@ -189,11 +189,14 @@ const handleSubmit = async (e:FormEvent ) => {
 
 //    http://localhost:3000/api/product       https://desh-e-mart.vercel.app/api/product
     try {
+        const baseUrl = 'https://desh-e-mart.vercel.app/api/product';
         const url = mode === 'edit' 
-          ? `https://desh-e-mart.vercel.app/api/product?id=${initialData?._id}`
-          : 'https://desh-e-mart.vercel.app/api/product  ';
+          ? `${baseUrl}?id=${initialData?._id}`
+          : baseUrl;
   
         const method = mode === 'edit' ? 'PUT' : 'POST';
+
+        console.log("Sending request to:", url, "with method:", method);
   
         const res = await fetch(url, {
           method,
@@ -201,12 +204,14 @@ const handleSubmit = async (e:FormEvent ) => {
         });
   
         const data = await res.json();
+        console.log("Response:", data);
+
         if (res.ok) {
           alert(`Product ${mode === 'edit' ? 'updated' : 'added'} successfully!`);
           router.push('/admin/dashboard/products');
         } else {
-          console.error(`Error ${mode === 'edit' ? 'updating' : 'adding'} product:`, data.error);
-          alert(`Error ${mode === 'edit' ? 'updating' : 'adding'} product: ` + data.error);
+          console.error(`Error ${mode === 'edit' ? 'updating' : 'adding'} product:`, data.error || data.message);
+          alert(`Error ${mode === 'edit' ? 'updating' : 'adding'} product: ` + (data.error || data.message || "Unknown error"));
         }
       } catch (error) {
         console.error('Error during fetch:', error);
