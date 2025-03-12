@@ -6,6 +6,7 @@ import { Button } from "@nextui-org/button";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useUser } from "@clerk/nextjs";
+import AdminProtected from "@/components/AdminProtected";
 
 export default function Dashboard() {
   const router = useRouter();
@@ -46,6 +47,7 @@ export default function Dashboard() {
   }
 
   return (
+    <AdminProtected>
     <div>
       <header>
         <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
@@ -105,5 +107,6 @@ export default function Dashboard() {
         <div className="h-32 rounded-lg bg-gray-200"></div>
       </div>
     </div>
+    </AdminProtected>
   );
 }

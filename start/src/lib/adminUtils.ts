@@ -1,7 +1,7 @@
-import { currentUser } from "@clerk/nextjs";
+import { currentUser } from "@clerk/nextjs/server";
 
 // List of admin email addresses
-const ADMIN_EMAILS = ["admin@example.com"]; // Replace with your actual admin email
+const ADMIN_EMAILS = ["jayaruperera1998@gmail.com"]; // Replace with your actual admin email
 
 export async function isAdmin() {
   const user = await currentUser();
