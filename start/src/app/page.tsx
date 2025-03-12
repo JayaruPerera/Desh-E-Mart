@@ -6,8 +6,12 @@ import CardSlider from "@/components/CardSlider";
 import Footer from "@/sections/Footer";
 import Link from "next/link";
 import MapReview from "@/components/MapReview";
+import ShopStatus from "@/components/ShopStatus";
+import { getShopStatus } from "@/lib/shop-status";
 
-export default function Home() {
+export default async function Home() {
+  const isShopOpen = await getShopStatus();
+  
   return (
     <div className="home-container">
 
@@ -37,14 +41,11 @@ export default function Home() {
           </div>
 
           <div className="right">
-            <h4 className="openclose">
-              <div className="dot"></div>
-              Open
-            </h4>
-            <div className="time">
+          <ShopStatus initialStatus={isShopOpen} />
+            {/* <div className="time">
               <p>from 09:00 am to 05:00 pm</p>
-              <p>Monday - Friday</p>
-            </div>
+              <p>Monday - Friday</p> */}
+            {/* </div> */}
           </div>
 
         </div>

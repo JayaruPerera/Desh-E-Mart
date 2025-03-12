@@ -18,3 +18,11 @@ export async function checkAdminAccess() {
   
   return true;
 }
+
+export async function isUserAdmin() {
+  const user = await currentUser();
+  
+  if (!user) return false;
+  
+  return user.publicMetadata?.role === "admin";
+}
