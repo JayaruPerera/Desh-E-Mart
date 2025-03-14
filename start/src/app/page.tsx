@@ -9,8 +9,13 @@ import MapReview from "@/components/MapReview";
 import ShopStatus from "@/components/ShopStatus";
 import { getShopStatus } from "@/lib/shop-status";
 
+// Force dynamic rendering to prevent caching
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export default async function Home() {
   const isShopOpen = await getShopStatus();
+  console.log("Home page shop status:", isShopOpen);
   
   return (
     <div className="home-container">
