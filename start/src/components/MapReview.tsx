@@ -4,7 +4,7 @@ import ReviewSection from './ReviewSection';
 
 const MapReview = () => {
     return (
-        <div className='flex flex-row gap-3'>
+        <div className='w-full'>
           <MapSection />
           {/* <ReviewSection /> */}
         </div>

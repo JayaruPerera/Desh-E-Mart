@@ -30,21 +30,21 @@ const Header = () => {
 
   return (<nav className="z-50 fixed w-full h-20">
 
-    <div className="flex  h-full w-full items-center px-4 md:px-16 lg:px-24 bg-[#161A1D]/90">
+    <div className="flex  h-full w-full items-center px-3 sm:px-4 md:px-16 lg:px-24 bg-[#161A1D]/90">
       <Link href="/">
       <Image
       src={Logo}
       alt="Logo"
-      width={160}
-      height={160}
-      className="cursor-pointer"
+      width={120}
+      height={120}
+      className="cursor-pointer sm:w-[160px]"
       priority
       />
       </Link>
 
       {/*Navbar links*/}
       <div className="hidden md:flex ml-auto">
-        <ul className="hidden sm:flex sm:text-[10px] md:text-[14px] lg:text-[16px] ml-10  gap-12">
+        <ul className="hidden sm:flex sm:text-[10px] md:text-[14px] lg:text-[16px] ml-10 gap-6 md:gap-12">
         <Link href="/">
           <li className="hover:opacity-80">Home</li>
         </Link>
@@ -67,17 +67,17 @@ const Header = () => {
       </div>
 
       {/*User buttons*/}
-      <div className="ml-10 sm:ml-auto flex items-center">
+      <div className="ml-10 md:ml-10 flex items-center">
 
           {isSignedIn ? (
             <UserButton afterSignOutUrl="/" />
           ) : (
-            <ul className="flex space-x-8 sm:space-x-4 justify-start items-center">
+            <ul className="flex space-x-2 sm:space-x-4 justify-start items-center">
               <Link href="/sign-in">
-                <li className="sm:text-[12px] md:text-[14px] lg:text-[16px]">Sign In</li>
+                <li className="text-sm sm:text-[12px] md:text-[14px] lg:text-[16px]">Sign In</li>
               </Link>
               <Link href="/sign-up">
-                <li className="sm:text-[12px] md:text-[14px] lg:text-[16px] text-[#161A1D] py-3 px-4 rounded-full bg-[#FCFDFF]">Sign Up</li>
+                <li className="text-sm sm:text-[12px] md:text-[14px] lg:text-[16px] text-[#161A1D] py-2 px-3 sm:py-3 sm:px-4 rounded-full bg-[#FCFDFF]">Sign Up</li>
               </Link>
             </ul>
           )}
