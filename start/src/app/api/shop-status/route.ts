@@ -34,11 +34,15 @@ export async function POST(request: Request) {
     console.log("Current status in database:", status ? status.isOpen : "not found");
     
     if (status) {
-      // Update existing status
-      status.isOpen = isOpen;
-      status.lastUpdated = new Date();
-      await status.save();
-      console.log("Successfully updated status to:", isOpen);
+      // Update existing status using findByIdAndUpdate for more reliable updates
+      const updatedStatus = await ShopStatus.findByIdAndUpdate(
+        status._id,
+        { isOpen: isOpen, lastUpdated: new Date() },
+        { new: true } // Return the updated document
+      );
+      
+      console.log("Updated status in database:", updatedStatus?.isOpen);
+      status = updatedStatus;
     } else {
       // Create new status if none exists
       status = await ShopStatus.create({ 
@@ -48,7 +52,12 @@ export async function POST(request: Request) {
       console.log("Created new status with value:", isOpen);
     }
     
-    return NextResponse.json({ isOpen: status.isOpen });
+    // Double-check the update was successful
+    const verifiedStatus = await ShopStatus.findOne({});
+    console.log("Verified status in database:", verifiedStatus?.isOpen);
+
+    // Make sure we're returning the correct status
+    return NextResponse.json({ isOpen: verifiedStatus ? verifiedStatus.isOpen : status.isOpen });
   } catch (error) {
     console.error("Error in POST shop status:", error);
     return NextResponse.json({ error: "Failed to update shop status" }, { status: 500 });

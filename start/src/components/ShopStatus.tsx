@@ -32,10 +32,14 @@ export default function ShopStatus({ initialStatus }: ShopStatusProps) {
   useEffect(() => {
     const pollStatus = async () => {
       try {
-        const response = await fetch('/api/shop-status', {
-          cache: 'no-store',
-          headers: {
-            'Cache-Control': 'no-cache'
+        // Add a timestamp to prevent caching
+      const timestamp = new Date().getTime();
+      const response = await fetch(`/api/shop-status?t=${timestamp}`, {
+        cache: 'no-store',
+        headers: {
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
+          'Pragma': 'no-cache',
+          'Expires': '0'
           }
         });
         if (response.ok) {
@@ -48,8 +52,8 @@ export default function ShopStatus({ initialStatus }: ShopStatusProps) {
       }
     };
 
-    // Poll every 10 seconds to keep status updated
-    const interval = setInterval(pollStatus, 10000);
+    // Poll every 30 seconds to keep status updated
+    const interval = setInterval(pollStatus, 30000);
     return () => clearInterval(interval);
   }, []);
 

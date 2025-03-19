@@ -13,6 +13,7 @@ import Header from "@/sections/Header";
 import { useEffect, useState } from "react";
 import { Navbar } from "@nextui-org/react";
 import Footer from "@/sections/Footer";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
 
 //Helps TypeScript ensure products follow this structure.
 interface Product {
@@ -186,33 +187,47 @@ function ProductsPage() {
         {filteredProducts.map((product) => (
           <div
             key={product._id}
-            className="sm:ml-8 mt-10 ml-14 lg:w-[226px] md:w-[200px] sm:w-[130px] h-auto flex flex-col justify-between"
+            className="sm:ml-8 mt-10 ml-14 lg:w-[226px] md:w-[200px] sm:w-[130px] h-auto relative rounded-xl overflow-hidden bg-black/30 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/20"
           >
+            <GlowingEffect 
+              disabled={false} 
+              glow={true} 
+              blur={5} 
+              spread={20} 
+              borderWidth={1.5}
+              movementDuration={1.5}
+              variant="default"
+              className="z-0"
+            />
+            <div className="p-3 flex flex-col justify-between h-full z-10 relative">
+            <div className="overflow-hidden rounded-xl">
             <Image
               src={product.image}
               alt={product.title}
               width={200}
               height={200}
-              className="w-full rounded-xl "
+              className="w-full rounded-xl transition-transform duration-500 hover:scale-110"
             />
-            <h1 className="font-bold md:text-[15px] sm:text-sm">
+            </div>
+            <h1 className="font-bold md:text-[15px] sm:text-sm mt-2 text-white">
               {product.title}
             </h1>
             <p
-              className="hidden text-justify sm:block text-sm md:text-[14px] truncate"
+              className="hidden text-justify sm:block text-sm md:text-[14px] truncate text-gray-300"
               title={product.description}
             >
               {product.description}
             </p>
-            <p className="font-bold md:text-[18px] sm:text-[16px]">
+            <p className="font-bold md:text-[18px] sm:text-[16px] text-white">
               LKR {product.price.toLocaleString()}
             </p>
 
             <Link href={`./checkout?price=${product.price}`}>
-              <button className="w-full mt-4 px-4 py-2 bg-white text-black font-bold rounded hover:bg-[#9D1CAC] transition duration-300 md:text-sm sm:text-[14px]">
+              <button className="w-full mt-4 px-4 py-2 bg-white text-black font-bold rounded hover:bg-[#9D1CAC] transition duration-300 md:text-sm sm:text-[14px] transform hover:-translate-y-1">
                 Buy Now
               </button>
             </Link>
+          </div>
           </div>
         ))}
       </div>

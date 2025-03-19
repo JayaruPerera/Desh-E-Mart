@@ -7,3 +7,9 @@
         @apply 
     }
 }
+@layer utilities {
+    [mask-composite="intersect"] {
+      -webkit-mask-composite: source-in;
+      mask-composite: intersect;
+    }
+  }

@@ -159,11 +159,30 @@ import Link from "next/link";
 import Logo from "@/assets/images/navLogo.png";
 import { icons } from "@/assets/icons/assets";
 import './footer.css';
+import { StarsBackground } from "@/components/ui/stars-background";
+import { ShootingStars } from "@/components/ui/shooting-stars";
+
 
 export const Footer = () => {
   return ( 
-    <div className="footer flex flex-col h-full w-full items-center mt-[140px] sm:mt-[80px] px-4 md:px-16 lg:px-24">
+    <div className="footer flex flex-col h-full w-full items-center mt-[140px] sm:mt-[80px] px-4 md:px-16 lg:px-24 relative overflow-hidden">
       
+      {/* Add background effects */}
+      <div className="absolute inset-0 bg-transparent">
+        <StarsBackground 
+          starDensity={0.0002}
+          className="opacity-50"
+        />
+        <ShootingStars 
+          minDelay={2000}
+          maxDelay={5000}
+          starColor="#ffffff"
+          trailColor="#4a4a4a"
+          className="opacity-30"
+        />
+      </div>
+
+      <div className="relative z-10 w-full">
       <div className="footer-top">
         <div className="footer-logo">
           <Link href="/">
@@ -240,6 +259,7 @@ export const Footer = () => {
         <p>Read our <span>Privacy Policy</span> and <span>Terms of Use</span></p>
       </div>
       
+    </div>
     </div>
   );
 };
