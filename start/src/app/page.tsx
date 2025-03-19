@@ -355,15 +355,15 @@ export default function Home() {
       >
         <motion.div
           variants={fadeInUp}
-          className="w-[100%] mb-[-50px] flex flex-col py-[8px] border-b border-[#C1C2C3] border-opacity-30"
+          className="w-full mb-6 flex flex-col py-2 border-b border-[#C1C2C3] border-opacity-30"
         >
-          <p className="text-[14px] text-[#FCFDFF] opacity-70">Shop Products</p>
+          <p className="text-sm text-[#FCFDFF] opacity-70 px-2">Shop Products</p>
         </motion.div>
 
-        <motion.div variants={fadeInUp}>
+        <motion.div variants={fadeInUp} className="w-full overflow-hidden">
           <CardSlider heading="Mobile Phones" seemore="/products" />
           <CardSlider heading="Charges & Accessories" seemore="/products" />
-          <div className="view all">
+          <div className="view all mt-8">
             <Link href="/products">
               <button className="hover:opacity-80 text-[16px] text-[#161A1D] py-3 px-4 rounded-full bg-[#FCFDFF]">
                 View all

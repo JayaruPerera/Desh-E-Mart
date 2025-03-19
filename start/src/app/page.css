@@ -326,6 +326,51 @@
     }
 }
 
+/* Product section responsive styles */
+@media screen and (max-width: 768px) {
+    .main-section {
+      width: 95%;
+      padding: 0 8px;
+      overflow: hidden;  /* Prevent horizontal scroll */
+    }
+  
+    /* Product slider container */
+    .product-slider {
+      width: 100%;
+      margin: 0 auto;
+      padding: 0;
+    }
+  
+    /* Individual product cards */
+    .product-card {
+      min-width: 280px;  /* Set minimum width for cards */
+      max-width: 100%;   /* Ensure cards don't exceed container */
+    }
+  
+    /* Product section header */
+    .product-section-header {
+      padding: 0 12px;
+    }
+  
+    /* View all button container */
+    .view.all {
+      padding: 20px 0;
+      text-align: center;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .main-section {
+      width: 100%;
+      padding: 0 12px;
+    }
+  
+    .product-card {
+      min-width: 240px;  /* Smaller cards for very small screens */
+    }
+  }
+
+
 
 @media screen and (min-width: 992px) {
     .home-content {

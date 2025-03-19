@@ -77,7 +77,7 @@ const Header = () => {
                 <li className="text-sm sm:text-[12px] md:text-[14px] lg:text-[16px]">Sign In</li>
               </Link>
               <Link href="/sign-up">
-                <li className="text-sm sm:text-[12px] md:text-[14px] lg:text-[16px] text-[#161A1D] py-2 px-3 sm:py-3 sm:px-4 rounded-full bg-[#FCFDFF]">Sign Up</li>
+                <li className="sm:text-[12px] md:text-[14px] lg:text-[16px] text-[#161A1D] py-3 px-4 rounded-full bg-[#FCFDFF]">Sign Up</li>
               </Link>
             </ul>
           )}
